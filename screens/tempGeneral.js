@@ -5,7 +5,8 @@ import {Ionicons} from '@expo/vector-icons';
 export default TempGeneral = ({navigation}) => {
   
     useLayoutEffect(() => {
-        navigation.setOptions({
+        navigation.setOptions({      
+            title: "Temperatures",
             headerLeft: null
           });
     }, [navigation]);
@@ -13,7 +14,6 @@ export default TempGeneral = ({navigation}) => {
     return (
     <View style={styles.container}>
       <Text>Temperatures General here!</Text>
-      
     </View>
   );
 }

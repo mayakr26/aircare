@@ -6,7 +6,7 @@ import { Button } from 'react-native-elements';
 export default StartScreen = ({navigation}) => {
   
   const pressHandler = props => {
-    navigation.navigate("tempGeneral");  
+    navigation.navigate("tempGeneral");
   };
   
   return (
