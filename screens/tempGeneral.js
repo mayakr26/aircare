@@ -6,7 +6,6 @@ export default TempGeneral = ({navigation}) => {
   
     useLayoutEffect(() => {
         navigation.setOptions({      
-            title: "Temperatures",
             headerLeft: null
           });
     }, [navigation]);

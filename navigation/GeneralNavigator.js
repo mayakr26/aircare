@@ -27,7 +27,7 @@ export default GeneralNavigator = (navigation) => {
             }}
         >
             <GeneralTab.Screen name="tempGeneral" component={TemperatureNavigator}/>
-            <GeneralTab.Screen name="airGeneral" component={TemperatureNavigator}/>
+            <GeneralTab.Screen name="airGeneral" component={AirNavigator}/>
         </GeneralTab.Navigator>
     );
 }

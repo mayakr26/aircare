@@ -14,8 +14,8 @@ export default MainNavigator = () => {
                 headerStyle: {height: 120},
                 headerTitleStyle: {fontSize: 32, fontWeight: 'bold', color:'blue'},      
             }}>
-            <MainStack.Screen name="startScreen" component={StartScreen}/>
-            <MainStack.Screen name="tempGeneral" component={TempGeneral}/>
+            <MainStack.Screen name="startScreen" component={StartScreen} options={{ headerShown: false}}/>
+            <MainStack.Screen name="tempGeneral" component={TempGeneral} options={{ headerTitle: "Temperatures"}}/>
             </MainStack.Navigator>
         </NavigationContainer>
     );
