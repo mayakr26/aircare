@@ -10,7 +10,7 @@ const MainStack = createStackNavigator();
 export default MainNavigator = () => {
     return (
         <NavigationContainer>
-            <MainStack.Navigator initialRouteName="tempGeneral" screenOptions={{
+            <MainStack.Navigator initialRouteName="startScreen" screenOptions={{
                 headerTitle: "AirCare",
                 headerStyle: {height: 120},
                 headerTitleStyle: {fontSize: 32, fontWeight: 'bold', color:'blue'},      
