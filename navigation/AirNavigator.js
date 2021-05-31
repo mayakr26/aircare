@@ -13,7 +13,7 @@ export default TemperatureNavigator = () => {
             headerTitleStyle: {fontSize: 32, fontWeight: 'bold', color:'blue'},      
         }}>
             <AirStack.Screen name="airGeneral" component={airGeneral}/>
-            <AirStack.Screen name="AddCity" component={InputScreen}/>
+            <AirStack.Screen name="AddCity" component={InputScreen} options={{headerTitle: 'Add City'}}/>
         </AirStack.Navigator>
     );
 }

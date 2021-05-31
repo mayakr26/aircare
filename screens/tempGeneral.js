@@ -9,8 +9,9 @@ export default TempGeneral = ({navigation}) => {
   
     useLayoutEffect(() => {
         navigation.setOptions({      
-            headerLeft: null,
-            headerTitle: "Temperature"
+            headerTitle: "Temperature",
+            headerRight: () => (<Button type='clear' icon={<Ionicons name='ios-add' size={32} color="blue"/>}
+          onPress={() => navigation.navigate("AddCity")}/>)
           });
     }, [navigation]);
 
