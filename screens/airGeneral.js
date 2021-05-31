@@ -7,7 +7,7 @@ export default AirGeneral = ({navigation}) => {
     useLayoutEffect(() => {
         navigation.setOptions({
             headerLeft: null,
-            title: "Aircondition"
+            title: "Air Condition"
           });
     }, [navigation]);
 

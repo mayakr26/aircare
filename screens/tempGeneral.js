@@ -1,18 +1,29 @@
-import React, {useLayoutEffect} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useLayoutEffect, useState } from 'react';
+import { StyleSheet, Modal, Text, View } from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
+import { Button } from 'react-native-elements';
 
 export default TempGeneral = ({navigation}) => {
+
+    const [modalVisible, setModalVisible] = useState(true);
   
     useLayoutEffect(() => {
         navigation.setOptions({      
-            headerLeft: null
+            headerLeft: null,
+            headerTitle: "Temperature"
           });
     }, [navigation]);
 
     return (
     <View style={styles.container}>
-      <Text>Temperatures General here!</Text>
+        <Modal visible={modalVisible} transparent={true}>
+            <View style={styles.modalView}>
+                <Text>MODAL!</Text>
+                <Button type='clear' icon={<Ionicons name='ios-close' size={32} color="blue"/>}
+                onPress={() => setModalVisible(false)}/>
+            </View>
+        </Modal>
+        <Text>Temperatures General here!</Text>
     </View>
   );
 }
@@ -24,4 +35,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  modalView: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: 'tomato'
+  }
 });

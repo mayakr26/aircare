@@ -1,0 +1,19 @@
+import React from 'react';
+import {createStackNavigator} from '@react-navigation/stack';
+import InputScreen from '../screens/inputScreen';
+import airGeneral from '../screens/airGeneral';
+
+
+const AirStack = createStackNavigator();
+
+export default TemperatureNavigator = () => {
+    return (
+        <AirStack.Navigator initialRouteName="airGeneral" screenOptions={{
+            headerStyle: {height: 120},
+            headerTitleStyle: {fontSize: 32, fontWeight: 'bold', color:'blue'},      
+        }}>
+            <AirStack.Screen name="airGeneral" component={airGeneral}/>
+            <AirStack.Screen name="AddCity" component={InputScreen}/>
+        </AirStack.Navigator>
+    );
+}
