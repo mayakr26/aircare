@@ -17,20 +17,20 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 15,
     padding: 10,
-    height: 100,
-    width: 300,
-    alignItems: "flex-end",
-    justifyContent: "flex-end",
+    height: 150,
+    width: 340,
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
     backgroundColor: "white",
     borderRadius: 10,
-    shadowColor: "black",
+    shadowColor: "blue",
     shadowOpacity: 0.25,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 10
   },
   gridText: {
-      fontSize: 18,
+      fontSize: 20,
       fontWeight: 'bold',
-      textAlign: 'left'
+      textAlign: 'center'
   }
 });

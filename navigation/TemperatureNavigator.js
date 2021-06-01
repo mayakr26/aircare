@@ -3,6 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import InputScreen from '../screens/inputScreen';
 import TempGeneral from '../screens/tempGeneral';
 import TempCity from '../screens/tempCity';
+import AirCity from '../screens/airCity';
 
 
 const TempStack = createStackNavigator();
@@ -15,7 +16,7 @@ export default TemperatureNavigator = () => {
         }}>
             <TempStack.Screen name="Temperature" component={TempGeneral}/>
             <TempStack.Screen name="AddCity" component={InputScreen} options={{headerTitle: 'Add City'}}/>
-            <TempStack.Screen name="City" component={TempCity}/>
+            <TempStack.Screen name="TempCity" component={TempCity}/>
         </TempStack.Navigator>
     );
 }

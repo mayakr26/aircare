@@ -12,7 +12,7 @@ export default TempGeneral = ({navigation}) => {
     const cities = CITIES;
 
     const clickHandler = id => {
-        navigation.navigate("City", {itemId: id});
+        navigation.navigate("TempCity", {itemId: id});
       };
   
     useLayoutEffect(() => {

@@ -1,10 +1,18 @@
 import React, {useLayoutEffect} from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
+import { CITIES } from '../data/dummyData';
+import CityTile from '../components/cityTile';
 
 export default AirGeneral = ({navigation}) => {
   
+    const cities = CITIES;
+
+    const clickHandler = id => {
+        navigation.navigate("AirCity", {itemId: id});
+      };
+
     useLayoutEffect(() => {
         navigation.setOptions({
             title: "Air Condition",
@@ -15,17 +23,19 @@ export default AirGeneral = ({navigation}) => {
 
     return (
     <View style={styles.container}>
-      <Text>Air General here!</Text>
-      
+        <FlatList
+            data={cities}
+            renderItem={(itemData) => { return <CityTile text={itemData.item.name} onClick={clickHandler}id={itemData.item.id}/>}}
+        />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    container: {
+      flex: 1,
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }
+  });
