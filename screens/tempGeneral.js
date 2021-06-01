@@ -1,11 +1,19 @@
 import React, {useLayoutEffect, useState } from 'react';
-import { StyleSheet, Modal, Text, View } from 'react-native';
+import { StyleSheet, Modal, Text, View, FlatList } from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
+import { CITIES } from '../data/dummyData';
+import CityTile from "../components/cityTile";
 
 export default TempGeneral = ({navigation}) => {
 
     const [modalVisible, setModalVisible] = useState(true);
+
+    const cities = CITIES;
+
+    const clickHandler = id => {
+        //navigation.navigate("Category", {itemId: id});
+      };
   
     useLayoutEffect(() => {
         navigation.setOptions({      
@@ -24,8 +32,12 @@ export default TempGeneral = ({navigation}) => {
                 onPress={() => setModalVisible(false)}/>
             </View>
         </Modal>
-        <Text>Temperatures General here!</Text>
+        <FlatList
+            data={cities}
+            renderItem={(itemData) => { return <CityTile text={itemData.item.name} onClick={clickHandler}id={itemData.item.id}/>}}
+        />
     </View>
+   
   );
 }
 
