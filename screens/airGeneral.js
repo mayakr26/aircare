@@ -16,7 +16,7 @@ export default AirGeneral = ({navigation}) => {
     useLayoutEffect(() => {
         navigation.setOptions({
             title: "Air Condition",
-            headerRight: () => (<Button type='clear' icon={<Ionicons name='ios-add' size={32} color="blue"/>}
+            headerRight: () => (<Button type='clear' icon={<Ionicons name='ios-add' size={32} color="#0068d3"/>}
             onPress={() => navigation.navigate("AddCity")}/>)
         });
     }, [navigation]);

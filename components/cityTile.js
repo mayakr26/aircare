@@ -16,21 +16,21 @@ const styles = StyleSheet.create({
   itemContainer: {
     flex: 1,
     margin: 15,
-    padding: 10,
-    height: 150,
+    padding: 20,
+    height: 120,
     width: 340,
     alignItems: "flex-start",
     justifyContent: "flex-start",
     backgroundColor: "white",
-    borderRadius: 10,
-    shadowColor: "blue",
+    borderRadius: 20,
+    shadowColor: "#0068d3",
     shadowOpacity: 0.25,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 10
   },
   gridText: {
       fontSize: 20,
-      fontWeight: 'bold',
+      fontWeight: '300',
       textAlign: 'center'
   }
 });

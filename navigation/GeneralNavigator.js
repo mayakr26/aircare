@@ -25,7 +25,7 @@ export default GeneralNavigator = (navigation) => {
                 },
             })}
             tabBarOptions={{
-                activeTintColor: 'blue',
+                activeTintColor: '#0068d3',
                 inactiveTintColor: 'gray',
             }}
         >

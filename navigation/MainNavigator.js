@@ -13,7 +13,7 @@ export default MainNavigator = () => {
             <MainStack.Navigator initialRouteName="startScreen" screenOptions={{
                 headerTitle: "AirCare",
                 headerStyle: {height: 120},
-                headerTitleStyle: {fontSize: 32, fontWeight: 'bold', color:'blue'},      
+                headerTitleStyle: {fontSize: 32, fontWeight: 'bold', color:'#0068d3'},      
             }}>
             <MainStack.Screen name="startScreen" component={StartScreen} options={{ headerShown: false}}/>
             <MainStack.Screen name="tempGeneral" component={TempGeneral} options={{ headerTitle: "Temperatures"}}/>
