@@ -1,7 +1,9 @@
 class City {
-    constructor(id, name) {
+    constructor(id, name, temps, dates) {
       this.id = id;
       this.name = name;
+      this.temps = temps;
+      this.dates = dates;
     }
   }
   

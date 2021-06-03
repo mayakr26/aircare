@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     shadowRadius: 10
   },
   gridText: {
-      fontSize: 20,
+      fontSize: 15,
       fontWeight: '300',
       textAlign: 'center'
   }
