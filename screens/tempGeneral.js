@@ -31,7 +31,7 @@ export default TempGeneral = ({navigation}) => {
                   style={styles.logo}
                   source={require('../assets/Logo.png')} 
                 />
-                <Button style={styles.button} type='clear' icon={<Ionicons name='ios-close' size={32} color="#0068d3"/>}
+                <Button style={styles.button} type='clear' icon={<Ionicons name='arrow-forward' size={32} color="#0068d3"/>}
                 onPress={() => setModalVisible(false)}/>
                 <Image
                   style={styles.wave}
