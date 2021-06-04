@@ -5,6 +5,7 @@ import { Button } from 'react-native-elements';
 import { CITIES } from '../data/dummyData';
 import CityTile from '../components/cityTile';
 
+
 export default AirGeneral = ({navigation}) => {
   
     const cities = CITIES;
