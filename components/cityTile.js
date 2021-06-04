@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
   gridText: {
       fontSize: 15,
       fontWeight: '300',
-      textAlign: 'center'
+      textAlign: 'center',
+      fontFamily: 'Roboto-Regular',
   }
 });

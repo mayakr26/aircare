@@ -27,6 +27,9 @@ export default GeneralNavigator = (navigation) => {
             tabBarOptions={{
                 activeTintColor: '#0068d3',
                 inactiveTintColor: 'gray',
+                labelStyle: {
+                    fontFamily: "Roboto-Regular"
+                  }
             }}
         >
             <GeneralTab.Screen name="Temperature" component={TemperatureNavigator} title="Temperatures"/>

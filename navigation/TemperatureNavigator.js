@@ -12,7 +12,7 @@ export default TemperatureNavigator = () => {
     return (
         <TempStack.Navigator initialRouteName="Temperature" screenOptions={{
             headerStyle: {height: 120},
-            headerTitleStyle: {fontSize: 32, fontWeight: 'bold', color:'#0068d3'},      
+            headerTitleStyle: {fontFamily: 'Roboto-Bold', fontSize: 32, color:'#0068d3'},      
         }}>
             <TempStack.Screen name="Temperature" component={TempGeneral}/>
             <TempStack.Screen name="AddCity" component={InputScreen} options={{headerTitle: 'Add City'}}/>
