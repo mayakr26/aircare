@@ -1,10 +1,22 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, TouchableWithoutFeedback, Keyboard} from 'react-native';
+import InputTile from '../components/inputTile'
 
-export default InputScreen = props => {
+export default InputScreen = ({navigation}) => {
+    
+    const addHandler = (name) => {
+        if(name !== ''){
+            console.log("Add city: " + name)
+            navigation.goBack();
+        }
+        
+    }
+    
     return ( 
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}> 
-            <Text>InputScreen!</Text>
-        </View>
+        <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+            <View style={{flex: 1, padding: 15, flexDirection: 'row'}}> 
+                <InputTile placeholderText={"Add new City"} onAdd={addHandler}/>
+            </View>
+        </TouchableWithoutFeedback>
     );
 }
