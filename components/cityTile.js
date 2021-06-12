@@ -1,22 +1,17 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
-import { LineChart } from 'react-native-chart-kit';
+import { Chart, VerticalAxis, HorizontalAxis, Line } from 'react-native-responsive-linechart'
 
 export default GridTile = props => {
 
-  const linedata = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-    datasets: [
-      {
-        data: [20, 45, 28, 80, 99, 43],
-        strokeWidth: 2, // optional
-      },
-    ],
-  };
-  function* yLabel() {
-    yield* ['-10','0', '10', '20', '30', '40'];
+  let data1 = []
+
+  for(let i in props.temps) {
+    data1.push({
+      x: i,
+      y: props.temps[i]
+    })
   }
-  const yLabelIterator = yLabel();
 
   return (
     <TouchableOpacity
@@ -24,28 +19,16 @@ export default GridTile = props => {
       onPress={() => props.onClick(props.id)}
     >
       <Text style={styles.gridText}>{props.text}</Text>
-      <LineChart
-        data={linedata}
-        width={340}
-        height={100}
-        formatYLabel={() => yLabelIterator.next().value}
-        chartConfig={{
-          backgroundColor: '#e26a00',
-          backgroundGradientFrom: '#fb8c00',
-          backgroundGradientTo: '#ffa726',
-          decimalPlaces: 2, // optional, defaults to 2dp
-          color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-          style: {
-            borderRadius: 16          
-          }
-        }}
-        bezier
-        style={{
-          flex: 1,
-          marginVertical: 20,
-          marginLeft: -20,
-        }}
-      />
+      <Chart
+        style={{ height: 120, width: '100%', marginTop: 20 }}
+        xDomain={{ min: 0, max: 6 }}
+        yDomain={{ min: -10, max: 40 }}
+        padding={{ left: 20, top: 10, bottom: 20, right: 10 }}
+      >
+        <VerticalAxis tickValues={[-10, 0, 10, 20, 30, 40]} />
+        <HorizontalAxis tickCount={7} />
+        <Line data={data1} smoothing="none" theme={{ stroke: { color: '#0068d3', width: 2 } }} />
+      </Chart>
     </TouchableOpacity>
   );
 };
@@ -67,9 +50,9 @@ const styles = StyleSheet.create({
     shadowRadius: 10
   },
   gridText: {
-      fontSize: 15,
-      fontWeight: '300',
-      textAlign: 'center',
-      fontFamily: 'Roboto-Regular',
+    fontSize: 15,
+    fontWeight: '300',
+    textAlign: 'center',
+    fontFamily: 'Roboto-Regular',
   }
 });

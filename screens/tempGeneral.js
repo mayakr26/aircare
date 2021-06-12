@@ -43,7 +43,7 @@ export default TempGeneral = ({navigation}) => {
             data={cities}
             renderItem={(itemData) => { return <CityTile text={itemData.item.name + ' ' 
             + itemData.item.dates + ' ' 
-            + itemData.item.temps} onClick={clickHandler}id={itemData.item.id}/>}}
+            + itemData.item.temps} temps={itemData.item.temps} onClick={clickHandler}id={itemData.item.id}/>}}
         />
     </View>
    
