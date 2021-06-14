@@ -5,10 +5,11 @@ import { Chart, VerticalAxis, HorizontalAxis, Line } from 'react-native-responsi
 export default GridTile = props => {
 
   let data1 = []
+  let times = [1961, 1971, 1981, 1991, 2001, 2011, 2021]
 
   for(let i in props.temps) {
     data1.push({
-      x: i,
+      x: times[i],
       y: props.temps[i]
     })
   }
@@ -21,7 +22,7 @@ export default GridTile = props => {
       <Text style={styles.gridText}>{props.text}</Text>
       <Chart
         style={{ height: 120, width: '100%', marginTop: 20 }}
-        xDomain={{ min: 0, max: 6 }}
+        xDomain={{ min: 1961, max: 2021 }}
         yDomain={{ min: -10, max: 40 }}
         padding={{ left: 20, top: 10, bottom: 20, right: 10 }}
       >
