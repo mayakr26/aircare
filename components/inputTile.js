@@ -18,9 +18,13 @@ export default InputTile = (props) => {
 
     return (
         <View style={styles.itemContainer}>
-            <Ionicons name={'checkmark-circle-outline'} size={30} color={'#017AFF'} style={{position:'absolute', left: 15, top: 25}} onPress={() => {props.onAdd(currentInput)}}></Ionicons>
+            <Button onPress={() => {props.onAdd(currentInput)}} 
+            type="clear" icon={<Ionicons name="checkmark-circle-outline" size={24}
+            color="rgb(0, 122, 255)"/>}/>
             <TextInput placeholder="Add New City Here" style={styles.title} onChangeText={changeTextHandler} value={currentInput}/>
-            <Ionicons name={'close-circle-outline'} size={30} color={'#017AFF'} style={{position:'absolute', right: 15, top: 25}} onPress={() => {deleteHandler}}></Ionicons>
+            <Button onPress={() => {deleteHandler}}
+            type="clear" icon={<Ionicons name="backspace-outline" size={24}
+            color="rgb(0, 122, 255)"/>}/>
         </View>
     );
 };
@@ -32,9 +36,8 @@ const styles = StyleSheet.create({
     margin: 15,
     padding: 10,
     height: 80,
-    alignItems: 'center',
-    position: 'relative',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "space-between",
     backgroundColor: "white",
     borderRadius: 10,
     shadowColor: "black",
