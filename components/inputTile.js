@@ -12,17 +12,23 @@ export default InputTile = (props) => {
         setCurrentInput(text);
     }
 
+    const addHandler = () => {
+        if (currentInput !== '') {
+          props.onAdd(currentInput);
+        }
+    }
+
     const deleteHandler = () => {
-        setCurrentInput('');
+        setCurrentInput(""); 
     }
 
     return (
         <View style={styles.itemContainer}>
-            <Button onPress={() => {props.onAdd(currentInput)}} 
+            <Button onPress={addHandler}
             type="clear" icon={<Ionicons name="checkmark-circle-outline" size={24}
             color="rgb(0, 122, 255)"/>}/>
             <TextInput placeholder="Add New City Here" style={styles.title} onChangeText={changeTextHandler} value={currentInput}/>
-            <Button onPress={() => {deleteHandler}}
+            <Button onPress={deleteHandler}
             type="clear" icon={<Ionicons name="backspace-outline" size={24}
             color="rgb(0, 122, 255)"/>}/>
         </View>
