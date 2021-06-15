@@ -1,14 +1,18 @@
-import React, {useLayoutEffect} from 'react';
+import React, { useLayoutEffect, useContext } from "react";
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 import { CITIES } from '../data/dummyData';
 import CityTile from '../components/cityTile';
+import { ToDoContext } from "../data/ToDoContext";
+
 
 
 export default AirGeneral = ({navigation}) => {
-  
-    const cities = CITIES;
+
+    const [toDoData, setToDoData] = useContext(ToDoContext);
+
+    const cities = toDoData.cities;
 
     const clickHandler = id => {
         navigation.navigate("AirCity", {itemId: id});

@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import GeneralNavigator from "./navigation/GeneralNavigator";
 import MainNavigator from './navigation/MainNavigator';
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
+import { CITIES } from './data/dummyData';
+import { ToDoContext } from "./data/ToDoContext";
 
 export default App => {
+
+  const [toDoData, setToDoData] = useState({
+    cities: CITIES
+  });
 
   let [fontsLoaded] = useFonts({
     'Roboto-Black': require('./assets/fonts/Roboto-Black.ttf'),
@@ -24,6 +30,10 @@ export default App => {
   if (!fontsLoaded) {
     return <AppLoading />;
   } else {
-  return(<GeneralNavigator />)
+    return (
+      <ToDoContext.Provider value={[toDoData, setToDoData]}>
+        <GeneralNavigator />
+      </ToDoContext.Provider>
+    );
   }
 };

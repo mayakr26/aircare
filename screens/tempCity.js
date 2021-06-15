@@ -1,13 +1,14 @@
-import React, {useLayoutEffect} from 'react';
+import React, {useLayoutEffect, useContext} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import {Button} from 'react-native-elements';
 import {Ionicons} from '@expo/vector-icons';
-import { CITIES } from '../data/dummyData';
+import { ToDoContext } from '../data/ToDoContext';
 
 export default TempCity = ({route, navigation}) => {
     
     const {itemId} = route.params;
-    const selectedCity = CITIES.find(cit => cit.id === itemId);
+    const [toDoData, setToDoData] = useContext(ToDoContext);
+    const selectedCity = toDoData.cities.find(cit => cit.id === itemId);
     const cityName = selectedCity.name;
 
     useLayoutEffect(() => {

@@ -1,15 +1,18 @@
-import React, {useLayoutEffect, useState } from 'react';
+import React, {useLayoutEffect, useState, useContext } from 'react';
 import { StyleSheet, Modal, View, FlatList, Image, Text } from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
-import { CITIES } from '../data/dummyData';
 import CityTile from "../components/cityTile";
+import { ToDoContext } from '../data/ToDoContext';
+
 
 export default TempGeneral = ({navigation}) => {
 
     const [modalVisible, setModalVisible] = useState(true);
 
-    const cities = CITIES;
+    const [toDoData, setToDoData] = useContext(ToDoContext);
+
+    const cities = toDoData.cities;
 
     const clickHandler = id => {
         navigation.navigate("TempCity", {itemId: id});
@@ -43,7 +46,7 @@ export default TempGeneral = ({navigation}) => {
             data={cities}
             renderItem={(itemData) => { return <CityTile text={itemData.item.name + ' ' 
             + itemData.item.dates + ' ' 
-            + itemData.item.temps} temps={itemData.item.temps} onClick={clickHandler}id={itemData.item.id}/>}}
+            + itemData.item.temps} temps={itemData.item.temps} onClick={clickHandler} id={itemData.item.id}/>}}
         />
     </View>
    
