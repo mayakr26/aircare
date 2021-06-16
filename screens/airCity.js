@@ -9,20 +9,28 @@ import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-ta
 export default AirCity = ({ route, navigation }) => {
 
   const { itemId } = route.params;
-
-  const [getABC, setABC] = useState({
-    tableHead: ['Head', 'Head2', 'Head3', 'Head4'],
-    tableData: [
-      ['1', '2', '3', '4'],
-      ['a', 'b', 'c', 'd'],
-      ['1', '2', '3', '456\n789'],
-      ['a', 'b', 'c', 'd']
-    ]
-  })
-
   const [toDoData, setToDoData] = useContext(ToDoContext);
   const selectedCity = toDoData.cities.find(cit => cit.id === itemId);
   const cityName = selectedCity.name;
+
+  let times = [1961, 1971, 1981, 1991, 2001, 2011, 2021]
+
+  
+  const tableData = [];
+  const rowData = [];
+  for (let i = 0; i < times.length; i += 1) {
+    rowData.push([times[i],selectedCity.temps[i]]);
+  }
+  console.log(rowData)
+
+  
+  const [getABC, setABC] = useState({
+    tableHead: ['Januar'],
+    tableData: rowData
+  })
+
+
+  
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -33,7 +41,7 @@ export default AirCity = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Table borderStyle={{ borderWidth: 1, borderColor: '#c8e1ff' }}>
+      <Table style={styles.table} borderStyle={{ borderWidth: 1, borderColor: '#c8e1ff' }}>
         <Row data={getABC.tableHead} style={styles.head} textStyle={styles.text} />
         <Rows data={getABC.tableData} textStyle={styles.text} />
       </Table>
@@ -47,6 +55,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     justifyContent: 'flex-start',
+  },
+  table: {
+    margin: 30,
   },
 
   head: { height: 40, backgroundColor: '#f1f8ff' },
