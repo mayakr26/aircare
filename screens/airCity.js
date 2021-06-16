@@ -19,7 +19,7 @@ export default AirCity = ({ route, navigation }) => {
   const tableData = [];
   const rowData = [];
   for (let i = 0; i < times.length; i += 1) {
-    rowData.push([times[i],selectedCity.temps[i]]);
+    rowData.push([times[i],selectedCity.temps[i]+'°C']);
   }
   console.log(rowData)
 
