@@ -24,7 +24,8 @@ export default AirCity = ({ route, navigation }) => {
   console.log(rowData)
 
   
-  const [getABC, setABC] = useState({
+  const [getData, setData] = useState({
+    tableTop: ['J', 'F', 'M','A','M','J','J','A','S','O','N','D'],
     tableHead: ['Januar'],
     tableData: rowData
   })
@@ -41,9 +42,12 @@ export default AirCity = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
+      <Table style={styles.tableTop} borderStyle={{ borderWidth: 1, borderColor: '#c8e1ff' }}>
+        <Row data={getData.tableTop} style={styles.head} textStyle={styles.text} />
+      </Table>
       <Table style={styles.table} borderStyle={{ borderWidth: 1, borderColor: '#c8e1ff' }}>
-        <Row data={getABC.tableHead} style={styles.head} textStyle={styles.text} />
-        <Rows data={getABC.tableData} textStyle={styles.text} />
+        <Row data={getData.tableHead} style={styles.head} textStyle={styles.text} />
+        <Rows data={getData.tableData} textStyle={styles.text} />
       </Table>
     </View>
   )
@@ -58,6 +62,11 @@ const styles = StyleSheet.create({
   },
   table: {
     margin: 30,
+  },
+  tableTop: {
+    marginRight: 30,
+    marginLeft: 30,
+    marginTop: 30,
   },
 
   head: { height: 40, backgroundColor: '#f1f8ff' },
