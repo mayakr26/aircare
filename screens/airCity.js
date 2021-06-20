@@ -4,7 +4,7 @@ import { Button } from 'react-native-elements';
 import { Ionicons } from '@expo/vector-icons';
 import { ToDoContext } from '../data/ToDoContext';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
-import { TabView, SceneMap } from 'react-native-tab-view';
+import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 
 
 
@@ -162,6 +162,13 @@ export default AirCity = ({ route, navigation }) => {
         renderScene={renderScene}
         onIndexChange={setIndex}
         initialLayout={{ width: layout.width }}
+        renderTabBar={props =>
+          	  <TabBar
+          	    {...props}
+          	    indicatorStyle={{ backgroundColor: 'white' }}
+                tabStyle={{ backgroundColor: '#0068d3', minHeight: 50, padding: -10 }}
+          	  />
+          	}
       />
     </View>
   );
