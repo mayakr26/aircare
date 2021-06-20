@@ -12,7 +12,7 @@ export default AirCity = ({ route, navigation }) => {
 
   const { itemId } = route.params;
   const [toDoData, setToDoData] = useContext(ToDoContext);
-  const selectedCity = toDoData.cities.find(cit => cit.id === itemId);
+  const selectedCity = toDoData.citiesair.find(cit => cit.id === itemId);
   const cityName = selectedCity.name;
 
   const layout = useWindowDimensions();
@@ -22,7 +22,7 @@ export default AirCity = ({ route, navigation }) => {
   const rowData = [[], [], [], [], [], [], [], [], [], [], [], []];
   for (let a = 0; a < 12; a += 1) {
     for (let i = 0; i < times.length; i += 1) {
-      rowData[a].push([times[i], selectedCity.temps.month[a][i]+'°C']);
+      rowData[a].push([times[i], selectedCity.temps.month[a][i]+' µg/m^3']);
     }
   }
 

@@ -2,7 +2,6 @@ import React, { useLayoutEffect, useContext } from "react";
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
-import { CITIES } from '../data/dummyData';
 import CityTile from '../components/cityTile';
 import { ToDoContext } from "../data/ToDoContext";
 
@@ -12,7 +11,7 @@ export default AirGeneral = ({navigation}) => {
 
     const [toDoData, setToDoData] = useContext(ToDoContext);
 
-    const cities = toDoData.cities;
+    const cities = toDoData.citiesair;
 
     const clickHandler = id => {
         navigation.navigate("AirCity", {itemId: id});
@@ -30,7 +29,7 @@ export default AirGeneral = ({navigation}) => {
     <View style={styles.container}>
         <FlatList
             data={cities}
-            renderItem={(itemData) => { return <CityTile text={itemData.item.name} temps={itemData.item.temps.summary} onClick={clickHandler}id={itemData.item.id}/>}}
+            renderItem={(itemData) => { return <CityTile text={itemData.item.name} temps={itemData.item.temps.summary} onClick={clickHandler}id={itemData.item.id} effect={'air'}/>}}
         />
     </View>
   );

@@ -14,6 +14,19 @@ export default GridTile = props => {
     })
   }
 
+  let minyDomain = 0;
+  let maxyDomain = 0;
+  let valuesverticalaxis = [];
+  if (props.effect == 'air'){
+    minyDomain = 40;
+    maxyDomain = 60;
+    valuesverticalaxis = [40, 45, 50, 55, 60]
+  } else if (props.effect == 'temps'){
+    minyDomain = -10;
+    maxyDomain = 40;
+    valuesverticalaxis = [-10, 0, 10, 20, 30, 40]
+  }
+
   return (
     <TouchableOpacity
       style={styles.itemContainer}
@@ -23,10 +36,10 @@ export default GridTile = props => {
       <Chart
         style={{ height: 120, width: '100%', marginTop: 20 }}
         xDomain={{ min: 1961, max: 2021 }}
-        yDomain={{ min: -10, max: 40 }}
+        yDomain={{ min: minyDomain, max: maxyDomain }}
         padding={{ left: 20, top: 10, bottom: 20, right: 10 }}
       >
-        <VerticalAxis tickValues={[-10, 0, 10, 20, 30, 40]} />
+        <VerticalAxis tickValues={valuesverticalaxis} />
         <HorizontalAxis tickCount={7} />
         <Line data={data1} smoothing="none" theme={{ stroke: { color: '#0068d3', width: 2 } }} />
       </Chart>

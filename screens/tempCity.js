@@ -12,7 +12,7 @@ export default TempCity = ({ route, navigation }) => {
 
   const { itemId } = route.params;
   const [toDoData, setToDoData] = useContext(ToDoContext);
-  const selectedCity = toDoData.cities.find(cit => cit.id === itemId);
+  const selectedCity = toDoData.citiestemp.find(cit => cit.id === itemId);
   const cityName = selectedCity.name;
 
   const layout = useWindowDimensions();

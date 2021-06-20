@@ -12,7 +12,7 @@ export default TempGeneral = ({navigation}) => {
 
     const [toDoData, setToDoData] = useContext(ToDoContext);
 
-    const cities = toDoData.cities;
+    const cities = toDoData.citiestemp;
 
     const clickHandler = id => {
         navigation.navigate("TempCity", {itemId: id});
@@ -46,7 +46,7 @@ export default TempGeneral = ({navigation}) => {
             data={cities}
             renderItem={(itemData) => { return <CityTile text={itemData.item.name + ' ' 
             + itemData.item.dates + ' ' 
-            + itemData.item.temps} temps={itemData.item.temps.summary} onClick={clickHandler} id={itemData.item.id}/>}}
+            + itemData.item.temps} temps={itemData.item.temps.summary} onClick={clickHandler} id={itemData.item.id} effect={'temps'}/>}}
         />
     </View>
    

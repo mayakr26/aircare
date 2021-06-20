@@ -3,13 +3,14 @@ import GeneralNavigator from "./navigation/GeneralNavigator";
 import MainNavigator from './navigation/MainNavigator';
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
-import { CITIES } from './data/dummyData';
+import { CITIESAIR, CITIESTEMP } from './data/dummyData';
 import { ToDoContext } from "./data/ToDoContext";
 
 export default App => {
 
   const [toDoData, setToDoData] = useState({
-    cities: CITIES
+    citiesair: CITIESAIR,
+    citiestemp: CITIESTEMP
   });
 
   let [fontsLoaded] = useFonts({

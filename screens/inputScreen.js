@@ -9,9 +9,23 @@ export default InputScreen = ({navigation}) => {
     const [toDoData, setToDoData] = useContext(ToDoContext);
     const addHandler = name => {
         if(name !== ''){
-          let newIdCounter = toDoData.cities.length + 1;
+          let newIdCounterair = toDoData.citiesair.length + 1;
+          let newIdCountertemp = toDoData.citiestemp.length + 1;
           setToDoData(toDoData => ({
-            cities: [...toDoData.cities, new City(newIdCounter+'', name, {summary: [12,15,13,17,13,13,14], 
+            citiesair: [...toDoData.citiesair, new City(newIdCounterair+'', name, {summary: [49,51,51,50,47,52,58], 
+              month: [[12,15,13,17,13,13,14],
+              [13,15,13,17,13,13,14],
+              [12,15,13,17,13,13,14],
+              [12,15,13,17,13,13,14],
+              [12,15,13,17,13,13,14],
+              [12,15,13,17,13,13,14],
+              [12,15,13,17,13,13,14],
+              [12,15,13,17,13,13,14],
+              [12,15,13,17,13,13,14],
+              [12,15,13,17,13,13,14],
+              [12,15,13,17,13,13,14],
+              [12,15,13,17,13,13,14]]}, "15.06,14.06,13.06,12.06,11.06,10.06,09.06")],
+            citiestemp: [...toDoData.citiestemp, new City(newIdCountertemp+'', name, {summary: [12,15,13,17,13,13,14], 
               month: [[12,15,13,17,13,13,14],
               [13,15,13,17,13,13,14],
               [12,15,13,17,13,13,14],
