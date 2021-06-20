@@ -16,7 +16,7 @@ export default AirCity = ({ route, navigation }) => {
   let times = [1961, 1971, 1981, 1991, 2001, 2011, 2021]
 
   
-  const tableData = [];
+
   const rowData = [];
   for (let i = 0; i < times.length; i += 1) {
     rowData.push([times[i],selectedCity.temps[i]+'°C']);
