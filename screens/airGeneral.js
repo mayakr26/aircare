@@ -30,7 +30,7 @@ export default AirGeneral = ({navigation}) => {
     <View style={styles.container}>
         <FlatList
             data={cities}
-            renderItem={(itemData) => { return <CityTile text={itemData.item.name} temps={itemData.item.temps} onClick={clickHandler}id={itemData.item.id}/>}}
+            renderItem={(itemData) => { return <CityTile text={itemData.item.name} temps={itemData.item.temps.summary} onClick={clickHandler}id={itemData.item.id}/>}}
         />
     </View>
   );
