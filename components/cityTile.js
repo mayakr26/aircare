@@ -18,13 +18,13 @@ export default GridTile = props => {
   let maxyDomain = 0;
   let valuesverticalaxis = [];
   if (props.effect == 'air'){
-    minyDomain = 40;
+    minyDomain = 0;
     maxyDomain = 60;
     valuesverticalaxis = [40, 45, 50, 55, 60]
   } else if (props.effect == 'temps'){
-    minyDomain = -10;
-    maxyDomain = 40;
-    valuesverticalaxis = [-10, 0, 10, 20, 30, 40]
+    minyDomain = 5;
+    maxyDomain = 20;
+    valuesverticalaxis = [5, 10, 15, 20]
   }
 
   return (
