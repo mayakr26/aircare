@@ -4,7 +4,7 @@ import { ToDoContext } from '../data/ToDoContext';
 import { Table, Row, Rows } from 'react-native-table-component';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import { Chart, VerticalAxis, HorizontalAxis, Line } from 'react-native-responsive-linechart';
-
+import DefaultStyle from '../constants/Color';
 
 export default TempCity = ({ route, navigation }) => {
 
@@ -52,7 +52,7 @@ export default TempCity = ({ route, navigation }) => {
 
   const FirstRoute = () => (
     <View style={styles.view}>
-      <Table borderStyle={{ borderWidth: 1, borderColor: '#c8e1ff' }}>
+      <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[0]} style={styles.head} textStyle={styles.text} />
         <Rows data={getData.tableData[0]} textStyle={styles.text} />
       </Table>
@@ -64,14 +64,14 @@ export default TempCity = ({ route, navigation }) => {
      >
       <VerticalAxis tickValues={[-10, 0, 10, 20, 30, 40]} />
       <HorizontalAxis tickCount={7} />
-      <Line data={data1[0]} smoothing="none" theme={{ stroke: { color: '#0068d3', width: 2 } }} />
+      <Line data={data1[0]} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
       </Chart>
     </View>
   );
 
   const SecondRoute = () => (
     <View style={styles.view}>
-      <Table borderStyle={{ borderWidth: 1, borderColor: '#c8e1ff' }}>
+      <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[1]} style={styles.head} textStyle={styles.text} />
         <Rows data={getData.tableData[1]} textStyle={styles.text} />
       </Table>
@@ -83,14 +83,14 @@ export default TempCity = ({ route, navigation }) => {
      >
       <VerticalAxis tickValues={[-10, 0, 10, 20, 30, 40]} />
       <HorizontalAxis tickCount={7} />
-      <Line data={data1[1]} smoothing="none" theme={{ stroke: { color: '#0068d3', width: 2 } }} />
+      <Line data={data1[1]} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
       </Chart>
     </View>
   );
 
   const ThirdRoute = () => (
     <View style={styles.view}>
-      <Table borderStyle={{ borderWidth: 1, borderColor: '#c8e1ff' }}>
+      <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[2]} style={styles.head} textStyle={styles.text} />
         <Rows data={getData.tableData[2]} textStyle={styles.text} />
       </Table>
@@ -102,13 +102,13 @@ export default TempCity = ({ route, navigation }) => {
      >
       <VerticalAxis tickValues={[-10, 0, 10, 20, 30, 40]} />
       <HorizontalAxis tickCount={7} />
-      <Line data={data1[2]} smoothing="none" theme={{ stroke: { color: '#0068d3', width: 2 } }} />
+      <Line data={data1[2]} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
       </Chart>
     </View>
   );
   const FourthRoute = () => (
     <View style={styles.view}>
-      <Table borderStyle={{ borderWidth: 1, borderColor: '#c8e1ff' }}>
+      <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[3]} style={styles.head} textStyle={styles.text} />
         <Rows data={getData.tableData[3]} textStyle={styles.text} />
       </Table>
@@ -120,14 +120,14 @@ export default TempCity = ({ route, navigation }) => {
      >
       <VerticalAxis tickValues={[-10, 0, 10, 20, 30, 40]} />
       <HorizontalAxis tickCount={7} />
-      <Line data={data1[3]} smoothing="none" theme={{ stroke: { color: '#0068d3', width: 2 } }} />
+      <Line data={data1[3]} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
       </Chart>
     </View>
   );
 
   const FifthRoute = () => (
     <View style={styles.view}>
-      <Table borderStyle={{ borderWidth: 1, borderColor: '#c8e1ff' }}>
+      <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[4]} style={styles.head} textStyle={styles.text} />
         <Rows data={getData.tableData[4]} textStyle={styles.text} />
       </Table>
@@ -139,13 +139,13 @@ export default TempCity = ({ route, navigation }) => {
      >
       <VerticalAxis tickValues={[-10, 0, 10, 20, 30, 40]} />
       <HorizontalAxis tickCount={7} />
-      <Line data={data1[4]} smoothing="none" theme={{ stroke: { color: '#0068d3', width: 2 } }} />
+      <Line data={data1[4]} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
       </Chart>
     </View>
   );
   const SixthRoute = () => (
     <View style={styles.view}>
-      <Table borderStyle={{ borderWidth: 1, borderColor: '#c8e1ff' }}>
+      <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[5]} style={styles.head} textStyle={styles.text} />
         <Rows data={getData.tableData[5]} textStyle={styles.text} />
       </Table>
@@ -157,14 +157,14 @@ export default TempCity = ({ route, navigation }) => {
      >
       <VerticalAxis tickValues={[-10, 0, 10, 20, 30, 40]} />
       <HorizontalAxis tickCount={7} />
-      <Line data={data1[5]} smoothing="none" theme={{ stroke: { color: '#0068d3', width: 2 } }} />
+      <Line data={data1[5]} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
       </Chart>
     </View>
   );
 
   const SeventhRoute = () => (
     <View style={styles.view}>
-      <Table borderStyle={{ borderWidth: 1, borderColor: '#c8e1ff' }}>
+      <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[6]} style={styles.head} textStyle={styles.text} />
         <Rows data={getData.tableData[6]} textStyle={styles.text} />
       </Table>
@@ -176,14 +176,14 @@ export default TempCity = ({ route, navigation }) => {
      >
       <VerticalAxis tickValues={[-10, 0, 10, 20, 30, 40]} />
       <HorizontalAxis tickCount={7} />
-      <Line data={data1[6]} smoothing="none" theme={{ stroke: { color: '#0068d3', width: 2 } }} />
+      <Line data={data1[6]} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
       </Chart>
     </View>
   );
 
   const EighthRoute = () => (
     <View style={styles.view}>
-      <Table borderStyle={{ borderWidth: 1, borderColor: '#c8e1ff' }}>
+      <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[7]} style={styles.head} textStyle={styles.text} />
         <Rows data={getData.tableData[7]} textStyle={styles.text} />
       </Table>
@@ -195,13 +195,13 @@ export default TempCity = ({ route, navigation }) => {
      >
       <VerticalAxis tickValues={[-10, 0, 10, 20, 30, 40]} />
       <HorizontalAxis tickCount={7} />
-      <Line data={data1[7]} smoothing="none" theme={{ stroke: { color: '#0068d3', width: 2 } }} />
+      <Line data={data1[7]} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
       </Chart>
     </View>
   );
   const NinthRoute = () => (
     <View style={styles.view}>
-      <Table  borderStyle={{ borderWidth: 1, borderColor: '#c8e1ff' }}>
+      <Table  borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[8]} style={styles.head} textStyle={styles.text} />
         <Rows data={getData.tableData[8]} textStyle={styles.text} />
       </Table>
@@ -213,13 +213,13 @@ export default TempCity = ({ route, navigation }) => {
      >
       <VerticalAxis tickValues={[-10, 0, 10, 20, 30, 40]} />
       <HorizontalAxis tickCount={7} />
-      <Line data={data1[8]} smoothing="none" theme={{ stroke: { color: '#0068d3', width: 2 } }} />
+      <Line data={data1[8]} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
       </Chart>
     </View>
   );
   const TenthRoute = () => (
     <View style={styles.view}>
-      <Table borderStyle={{ borderWidth: 1, borderColor: '#c8e1ff' }}>
+      <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[9]} style={styles.head} textStyle={styles.text} />
         <Rows data={getData.tableData[9]} textStyle={styles.text} />
       </Table>
@@ -231,14 +231,14 @@ export default TempCity = ({ route, navigation }) => {
      >
       <VerticalAxis tickValues={[-10, 0, 10, 20, 30, 40]} />
       <HorizontalAxis tickCount={7} />
-      <Line data={data1[9]} smoothing="none" theme={{ stroke: { color: '#0068d3', width: 2 } }} />
+      <Line data={data1[9]} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
       </Chart>
     </View>
   );
 
   const EleventhRoute = () => (
     <View style={styles.view}>
-      <Table borderStyle={{ borderWidth: 1, borderColor: '#c8e1ff' }}>
+      <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[10]} style={styles.head} textStyle={styles.text} />
         <Rows data={getData.tableData[10]} textStyle={styles.text} />
       </Table>
@@ -250,14 +250,14 @@ export default TempCity = ({ route, navigation }) => {
      >
       <VerticalAxis tickValues={[-10, 0, 10, 20, 30, 40]} />
       <HorizontalAxis tickCount={7} />
-      <Line data={data1[10]} smoothing="none" theme={{ stroke: { color: '#0068d3', width: 2 } }} />
+      <Line data={data1[10]} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
       </Chart>
     </View>
   );
 
   const TwelfthRoute = () => (
     <View style={styles.view}>
-      <Table borderStyle={{ borderWidth: 1, borderColor: '#c8e1ff' }}>
+      <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[11]} style={styles.head} textStyle={styles.text} />
         <Rows data={getData.tableData[11]} textStyle={styles.text} />
       </Table>
@@ -269,7 +269,7 @@ export default TempCity = ({ route, navigation }) => {
      >
       <VerticalAxis tickValues={[-10, 0, 10, 20, 30, 40]} />
       <HorizontalAxis tickCount={7} />
-      <Line data={data1[11]} smoothing="none" theme={{ stroke: { color: '#0068d3', width: 2 } }} />
+      <Line data={data1[11]} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
       </Chart>
     </View>
   );
@@ -325,7 +325,7 @@ export default TempCity = ({ route, navigation }) => {
           	  <TabBar
           	    {...props}
           	    indicatorStyle={{ backgroundColor: 'white' }}
-                tabStyle={{ backgroundColor: '#0068d3', minHeight: 50, padding: -10 }}
+                tabStyle={{ backgroundColor: DefaultStyle.primary, minHeight: 50, padding: -10 }}
           	  />
           	}
       />
@@ -351,7 +351,7 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
 
-  head: { height: 40, backgroundColor: '#f1f8ff' },
+  head: { height: 40, backgroundColor: DefaultStyle.tableHeadBackgroundColor },
   text: { margin: 6 },
 
 });

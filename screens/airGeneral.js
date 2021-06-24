@@ -4,7 +4,7 @@ import {Ionicons} from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 import CityTile from '../components/cityTile';
 import { ToDoContext } from "../data/ToDoContext";
-
+import DefaultStyle from "../constants/Color";
 
 
 export default AirGeneral = ({navigation}) => {
@@ -20,7 +20,7 @@ export default AirGeneral = ({navigation}) => {
     useLayoutEffect(() => {
         navigation.setOptions({
             title: "Air Condition",
-            headerRight: () => (<Button type='clear' icon={<Ionicons name='ios-add' size={32} color="#0068d3"/>}
+            headerRight: () => (<Button type='clear' icon={<Ionicons name='ios-add' size={DefaultStyle.size} color={DefaultStyle.primary}/>}
             onPress={() => navigation.navigate("AddCity")}/>)
         });
     }, [navigation]);
@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: '#fff',
       alignItems: 'center',
-      justifyContent: 'center',
-      fontFamily: 'Roboto-BlackItalic',
+      justifyContent: 'center'
     }
   });

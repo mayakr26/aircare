@@ -4,6 +4,7 @@ import {Ionicons} from '@expo/vector-icons';
 import TemperatureNavigator from './TemperatureNavigator';
 import AirNavigator from './AirNavigator';
 import { NavigationContainer } from "@react-navigation/native";
+import DefaultStyle from '../constants/Color';
 
 const GeneralTab = createBottomTabNavigator();
 
@@ -25,10 +26,10 @@ export default GeneralNavigator = (navigation) => {
                 },
             })}
             tabBarOptions={{
-                activeTintColor: '#0068d3',
+                activeTintColor: DefaultStyle.primary,
                 inactiveTintColor: 'gray',
                 labelStyle: {
-                    fontFamily: "Roboto-Regular"
+                    fontFamily: DefaultStyle.font
                   }
             }}
         >

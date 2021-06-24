@@ -3,7 +3,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import InputScreen from '../screens/inputScreen';
 import TempGeneral from '../screens/tempGeneral';
 import TempCity from '../screens/tempCity';
-import AirCity from '../screens/airCity';
+import DefaultStyle from '../constants/Color';
 
 
 const TempStack = createStackNavigator();
@@ -12,7 +12,7 @@ export default TemperatureNavigator = () => {
     return (
         <TempStack.Navigator initialRouteName="Temperature" screenOptions={{
             headerStyle: {height: 120},
-            headerTitleStyle: {fontFamily: 'Roboto-Bold', fontSize: 32, color:'#0068d3'},      
+            headerTitleStyle: {fontFamily: DefaultStyle.fontBold, fontSize: DefaultStyle.size, color: DefaultStyle.primary},      
         }}>
             <TempStack.Screen name="Temperature" component={TempGeneral}/>
             <TempStack.Screen name="AddCity" component={InputScreen} options={{headerTitle: 'Add City'}}/>

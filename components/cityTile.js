@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
-import { Chart, VerticalAxis, HorizontalAxis, Line } from 'react-native-responsive-linechart'
+import { Chart, VerticalAxis, HorizontalAxis, Line } from 'react-native-responsive-linechart';
+import DefaultStyle from '../constants/Color';
 
 export default GridTile = props => {
 
@@ -18,9 +19,9 @@ export default GridTile = props => {
   let maxyDomain = 0;
   let valuesverticalaxis = [];
   if (props.effect == 'air'){
-    minyDomain = 40;
-    maxyDomain = 60;
-    valuesverticalaxis = [40, 45, 50, 55, 60]
+    minyDomain = 10;
+    maxyDomain = 170;
+    valuesverticalaxis = [10, 30, 50, 70, 90, 110, 130, 150, 170]
   } else if (props.effect == 'temps'){
     minyDomain = 5;
     maxyDomain = 20;
@@ -41,7 +42,7 @@ export default GridTile = props => {
       >
         <VerticalAxis tickValues={valuesverticalaxis} />
         <HorizontalAxis tickCount={7} />
-        <Line data={data1} smoothing="none" theme={{ stroke: { color: '#0068d3', width: 2 } }} />
+        <Line data={data1} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
       </Chart>
     </TouchableOpacity>
   );
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     backgroundColor: "white",
     borderRadius: 20,
-    shadowColor: "#0068d3",
+    shadowColor: DefaultStyle.primary,
     shadowOpacity: 0.25,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 10
@@ -67,6 +68,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '300',
     textAlign: 'center',
-    fontFamily: 'Roboto-Regular',
+    fontFamily: DefaultStyle.font,
   }
 });

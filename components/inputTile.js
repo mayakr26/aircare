@@ -3,6 +3,7 @@ import { Button } from "react-native-elements";
 import { View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { StyleSheet, TextInput} from "react-native";
+import DefaultStyle from '../constants/Color';
 
 export default InputTile = (props) => {
 
@@ -26,11 +27,11 @@ export default InputTile = (props) => {
         <View style={styles.itemContainer}>
             <Button onPress={addHandler}
             type="clear" icon={<Ionicons name="checkmark-circle-outline" size={24}
-            color="rgb(0, 122, 255)"/>}/>
+            color={DefaultStyle.primary}/>}/>
             <TextInput placeholder="Add New City Here" style={styles.title} onChangeText={changeTextHandler} value={currentInput}/>
             <Button onPress={deleteHandler}
             type="clear" icon={<Ionicons name="backspace-outline" size={24}
-            color="rgb(0, 122, 255)"/>}/>
+            color={DefaultStyle.primary}/>}/>
         </View>
     );
 };

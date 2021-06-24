@@ -4,6 +4,7 @@ import {Ionicons} from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 import CityTile from "../components/cityTile";
 import { ToDoContext } from '../data/ToDoContext';
+import DefaultStyle from '../constants/Color';
 
 
 export default TempGeneral = ({navigation}) => {
@@ -21,7 +22,7 @@ export default TempGeneral = ({navigation}) => {
     useLayoutEffect(() => {
         navigation.setOptions({      
             headerTitle: "Temperature",
-            headerRight: () => (<Button type='clear' icon={<Ionicons name='ios-add' size={32} color="#0068d3"/>}
+            headerRight: () => (<Button type='clear' icon={<Ionicons name='ios-add' size={DefaultStyle.size} color={DefaultStyle.primary}/>}
           onPress={() => navigation.navigate("AddCity")}/>)
           });
     }, [navigation]);
@@ -34,7 +35,7 @@ export default TempGeneral = ({navigation}) => {
                   style={styles.logo}
                   source={require('../assets/Logo.png')} 
                 />
-                <Button style={styles.button} type='clear' icon={<Ionicons name='arrow-forward' size={32} color="#0068d3"/>}
+                <Button style={styles.button} type='clear' icon={<Ionicons name='arrow-forward' size={DefaultStyle.size} color={DefaultStyle.primary}/>}
                 onPress={() => setModalVisible(false)}/>
                 <Image
                   style={styles.wave}
