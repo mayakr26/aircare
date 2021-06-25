@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GeneralNavigator from "./navigation/GeneralNavigator";
 import MainNavigator from './navigation/MainNavigator';
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
 import { CITIESAIR, CITIESTEMP } from './data/dummyData';
 import { ToDoContext } from "./data/ToDoContext";
+import { getData } from './data/AppStorage';
+
 
 export default App => {
 
@@ -12,6 +14,13 @@ export default App => {
     citiesair: CITIESAIR,
     citiestemp: CITIESTEMP
   });
+
+  useEffect(() => {
+    getData().then((returnedValue) => {
+      setToDoData(JSON.parse(returnedValue))}).catch((e) => {
+        console.error(e)
+      });
+  }, []);
 
   let [fontsLoaded] = useFonts({
     'Roboto-Black': require('./assets/fonts/Roboto-Black.ttf'),
