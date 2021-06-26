@@ -45,9 +45,7 @@ export default TempGeneral = ({navigation}) => {
         </Modal>
         <FlatList
             data={cities}
-            renderItem={(itemData) => { return <CityTile text={itemData.item.name + ' ' 
-            + itemData.item.dates + ' ' 
-            + itemData.item.temps} temps={itemData.item.temps.summary} onClick={clickHandler} id={itemData.item.id} effect={'temps'}/>}}
+            renderItem={(itemData) => { return <CityTile text={itemData.item.name} temps={itemData.item.temps.summary} onClick={clickHandler} id={itemData.item.id} effect={'temps'}/>}}
         />
     </View>
    
