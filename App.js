@@ -5,6 +5,7 @@ import { useFonts } from 'expo-font';
 import { CITIESAIR, CITIESTEMP } from './data/dummyData';
 import { ToDoContext } from "./data/ToDoContext";
 import { getData } from './data/AppStorage';
+import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 
 
 export default App => {
@@ -30,9 +31,12 @@ export default App => {
     return <AppLoading />;
   } else {
     return (
-      <ToDoContext.Provider value={[toDoData, setToDoData]}>
-        <GeneralNavigator />
-      </ToDoContext.Provider>
+      <AppearanceProvider>
+        <ToDoContext.Provider value={[toDoData, setToDoData]}>
+          <GeneralNavigator />
+        </ToDoContext.Provider>
+      </AppearanceProvider>
+
     );
   }
 };

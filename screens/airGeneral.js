@@ -5,13 +5,16 @@ import { Button } from 'react-native-elements';
 import CityTile from '../components/cityTile';
 import { ToDoContext } from "../data/ToDoContext";
 import DefaultStyle from "../constants/Color";
-
+import { useColorScheme } from 'react-native-appearance';
+import { getBackgroundColorTheme } from '../constants/Theme';
 
 export default AirGeneral = ({navigation}) => {
 
     const [toDoData, setToDoData] = useContext(ToDoContext);
 
     const cities = toDoData.citiesair;
+
+    const colorScheme = useColorScheme();
 
     const clickHandler = id => {
         navigation.navigate("AirCity", {itemId: id});
@@ -26,7 +29,7 @@ export default AirGeneral = ({navigation}) => {
     }, [navigation]);
 
     return (
-    <View style={styles.container}>
+    <View style={styles.container, {backgroundColor: getBackgroundColorTheme(colorScheme === 'light')}}>
         <FlatList
             data={cities}
             renderItem={(itemData) => { return <CityTile text={itemData.item.name} temps={itemData.item.temps.summary} onClick={clickHandler}id={itemData.item.id} effect={'air'}/>}}

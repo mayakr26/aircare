@@ -5,11 +5,12 @@ import { Table, Row, Rows } from 'react-native-table-component';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import { Chart, VerticalAxis, HorizontalAxis, Line } from 'react-native-responsive-linechart';
 import DefaultStyle from '../constants/Color';
-
+import { useColorScheme } from 'react-native-appearance';
+import { getBackgroundColorTheme, getTextColorTheme, getColorTheme } from '../constants/Theme';
 
 export default AirCity = ({ route, navigation }) => {
 
-  
+  const colorScheme = useColorScheme();
 
   const { itemId } = route.params;
   const [toDoData, setToDoData] = useContext(ToDoContext);
@@ -54,7 +55,7 @@ export default AirCity = ({ route, navigation }) => {
     <View style={styles.view}>
       <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[0]} style={styles.head} textStyle={styles.text} />
-        <Rows data={getData.tableData[0]} textStyle={styles.text} />
+        <Rows data={getData.tableData[0]} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}} />
       </Table>
       <Chart
       style={{ height: 120, width: '100%', marginTop: 20 }}
@@ -64,7 +65,7 @@ export default AirCity = ({ route, navigation }) => {
      >
       <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} />
       <HorizontalAxis tickCount={7} />
-      <Line data={data1[0]} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
+      <Line data={data1[0]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
       </Chart>
     </View>
   );
@@ -73,7 +74,7 @@ export default AirCity = ({ route, navigation }) => {
     <View style={styles.view}>
       <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[1]} style={styles.head} textStyle={styles.text} />
-        <Rows data={getData.tableData[1]} textStyle={styles.text} />
+        <Rows data={getData.tableData[1]} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}} />
       </Table>
       <Chart
       style={{ height: 120, width: '100%', marginTop: 20 }}
@@ -83,7 +84,7 @@ export default AirCity = ({ route, navigation }) => {
      >
       <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} />
       <HorizontalAxis tickCount={7} />
-      <Line data={data1[1]} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
+      <Line data={data1[1]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
       </Chart>
     </View>
   );
@@ -92,7 +93,7 @@ export default AirCity = ({ route, navigation }) => {
     <View style={styles.view}>
       <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[2]} style={styles.head} textStyle={styles.text} />
-        <Rows data={getData.tableData[2]} textStyle={styles.text} />
+        <Rows data={getData.tableData[2]} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}} />
       </Table>
       <Chart
       style={{ height: 120, width: '100%', marginTop: 20 }}
@@ -102,7 +103,7 @@ export default AirCity = ({ route, navigation }) => {
      >
       <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} />
       <HorizontalAxis tickCount={7} />
-      <Line data={data1[2]} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
+      <Line data={data1[2]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
       </Chart>
     </View>
   );
@@ -110,7 +111,7 @@ export default AirCity = ({ route, navigation }) => {
     <View style={styles.view}>
       <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[3]} style={styles.head} textStyle={styles.text} />
-        <Rows data={getData.tableData[3]} textStyle={styles.text} />
+        <Rows data={getData.tableData[3]} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}} />
       </Table>
       <Chart
       style={{ height: 120, width: '100%', marginTop: 20 }}
@@ -120,7 +121,7 @@ export default AirCity = ({ route, navigation }) => {
      >
       <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} />
       <HorizontalAxis tickCount={7} />
-      <Line data={data1[3]} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
+      <Line data={data1[3]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
       </Chart>
     </View>
   );
@@ -129,7 +130,7 @@ export default AirCity = ({ route, navigation }) => {
     <View style={styles.view}>
       <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[4]} style={styles.head} textStyle={styles.text} />
-        <Rows data={getData.tableData[4]} textStyle={styles.text} />
+        <Rows data={getData.tableData[4]} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}} />
       </Table>
       <Chart
       style={{ height: 120, width: '100%', marginTop: 20 }}
@@ -139,7 +140,7 @@ export default AirCity = ({ route, navigation }) => {
      >
       <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} />
       <HorizontalAxis tickCount={7} />
-      <Line data={data1[4]} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
+      <Line data={data1[4]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
       </Chart>
     </View>
   );
@@ -147,7 +148,7 @@ export default AirCity = ({ route, navigation }) => {
     <View style={styles.view}>
       <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[5]} style={styles.head} textStyle={styles.text} />
-        <Rows data={getData.tableData[5]} textStyle={styles.text} />
+        <Rows data={getData.tableData[5]} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}} />
       </Table>
       <Chart
       style={{ height: 120, width: '100%', marginTop: 20 }}
@@ -157,7 +158,7 @@ export default AirCity = ({ route, navigation }) => {
      >
       <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} />
       <HorizontalAxis tickCount={7} />
-      <Line data={data1[5]} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
+      <Line data={data1[5]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
       </Chart>
     </View>
   );
@@ -166,7 +167,7 @@ export default AirCity = ({ route, navigation }) => {
     <View style={styles.view}>
       <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[6]} style={styles.head} textStyle={styles.text} />
-        <Rows data={getData.tableData[6]} textStyle={styles.text} />
+        <Rows data={getData.tableData[6]} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}} />
       </Table>
       <Chart
       style={{ height: 120, width: '100%', marginTop: 20 }}
@@ -176,7 +177,7 @@ export default AirCity = ({ route, navigation }) => {
      >
       <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} />
       <HorizontalAxis tickCount={7} />
-      <Line data={data1[6]} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
+      <Line data={data1[6]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
       </Chart>
     </View>
   );
@@ -185,7 +186,7 @@ export default AirCity = ({ route, navigation }) => {
     <View style={styles.view}>
       <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[7]} style={styles.head} textStyle={styles.text} />
-        <Rows data={getData.tableData[7]} textStyle={styles.text} />
+        <Rows data={getData.tableData[7]} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}} />
       </Table>
       <Chart
       style={{ height: 120, width: '100%', marginTop: 20 }}
@@ -195,7 +196,7 @@ export default AirCity = ({ route, navigation }) => {
      >
       <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} />
       <HorizontalAxis tickCount={7} />
-      <Line data={data1[7]} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
+      <Line data={data1[7]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
       </Chart>
     </View>
   );
@@ -203,7 +204,7 @@ export default AirCity = ({ route, navigation }) => {
     <View style={styles.view}>
       <Table  borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[8]} style={styles.head} textStyle={styles.text} />
-        <Rows data={getData.tableData[8]} textStyle={styles.text} />
+        <Rows data={getData.tableData[8]} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}} />
       </Table>
       <Chart
       style={{ height: 120, width: '100%', marginTop: 20 }}
@@ -213,7 +214,7 @@ export default AirCity = ({ route, navigation }) => {
      >
       <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} />
       <HorizontalAxis tickCount={7} />
-      <Line data={data1[8]} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
+      <Line data={data1[8]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
       </Chart>
     </View>
   );
@@ -221,7 +222,7 @@ export default AirCity = ({ route, navigation }) => {
     <View style={styles.view}>
       <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[9]} style={styles.head} textStyle={styles.text} />
-        <Rows data={getData.tableData[9]} textStyle={styles.text} />
+        <Rows data={getData.tableData[9]} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}} />
       </Table>
       <Chart
       style={{ height: 120, width: '100%', marginTop: 20 }}
@@ -231,7 +232,7 @@ export default AirCity = ({ route, navigation }) => {
      >
       <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} />
       <HorizontalAxis tickCount={7} />
-      <Line data={data1[9]} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
+      <Line data={data1[9]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
       </Chart>
     </View>
   );
@@ -240,7 +241,7 @@ export default AirCity = ({ route, navigation }) => {
     <View style={styles.view}>
       <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[10]} style={styles.head} textStyle={styles.text} />
-        <Rows data={getData.tableData[10]} textStyle={styles.text} />
+        <Rows data={getData.tableData[10]} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}} />
       </Table>
       <Chart
       style={{ height: 120, width: '100%', marginTop: 20 }}
@@ -250,7 +251,7 @@ export default AirCity = ({ route, navigation }) => {
      >
       <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} />
       <HorizontalAxis tickCount={7} />
-      <Line data={data1[10]} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
+      <Line data={data1[10]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
       </Chart>
     </View>
   );
@@ -259,7 +260,7 @@ export default AirCity = ({ route, navigation }) => {
     <View style={styles.view}>
       <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[11]} style={styles.head} textStyle={styles.text} />
-        <Rows data={getData.tableData[11]} textStyle={styles.text} />
+        <Rows data={getData.tableData[11]} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}} />
       </Table>
       <Chart
       style={{ height: 120, width: '100%', marginTop: 20 }}
@@ -268,8 +269,8 @@ export default AirCity = ({ route, navigation }) => {
       padding={{ left: 20, top: 10, bottom: 20, right: 10 }}
      >
       <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} />
-      <HorizontalAxis tickCount={7} />
-      <Line data={data1[11]} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
+      <HorizontalAxis tickCount={7}/>
+      <Line data={data1[11]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
       </Chart>
     </View>
   );
@@ -320,12 +321,13 @@ export default AirCity = ({ route, navigation }) => {
         navigationState={{ index, routes }}
         renderScene={renderScene}
         onIndexChange={setIndex}
+        style = {{backgroundColor: getBackgroundColorTheme(colorScheme === 'light')}}
         initialLayout={{ width: layout.width }}
         renderTabBar={props =>
           	  <TabBar
           	    {...props}
           	    indicatorStyle={{ backgroundColor: 'white' }}
-                tabStyle={{ backgroundColor: DefaultStyle.primary, minHeight: 50, padding: -10 }}
+                tabStyle={{ backgroundColor: getColorTheme(colorScheme === 'light'), minHeight: 50, padding: -10 }}
           	  />
           	}
       />
@@ -351,7 +353,6 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
 
-  head: { height: 40, backgroundColor: DefaultStyle.tableHeadBackgroundColor },
-  text: { margin: 6 },
+  head: { height: 40, backgroundColor: DefaultStyle.tableHeadBackgroundColor }
 
 });

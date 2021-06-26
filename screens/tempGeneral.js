@@ -5,6 +5,8 @@ import { Button } from 'react-native-elements';
 import CityTile from "../components/cityTile";
 import { ToDoContext } from '../data/ToDoContext';
 import DefaultStyle from '../constants/Color';
+import { useColorScheme } from 'react-native-appearance';
+import { getBackgroundColorTheme } from '../constants/Theme';
 
 
 export default TempGeneral = ({navigation}) => {
@@ -15,9 +17,12 @@ export default TempGeneral = ({navigation}) => {
 
     const cities = toDoData.citiestemp;
 
+    const colorScheme = useColorScheme();
+
     const clickHandler = id => {
         navigation.navigate("TempCity", {itemId: id});
       };
+
   
     useLayoutEffect(() => {
         navigation.setOptions({      
@@ -28,27 +33,26 @@ export default TempGeneral = ({navigation}) => {
     }, [navigation]);
 
     return (
-    <View style={styles.container}>
-        <Modal visible={modalVisible} transparent={true}>
-            <View style={styles.modalView}>
-                <Image
-                  style={styles.logo}
-                  source={require('../assets/Logo.png')} 
-                />
-                <Button style={styles.button} type='clear' icon={<Ionicons name='arrow-forward' size={DefaultStyle.size} color={DefaultStyle.primary}/>}
-                onPress={() => setModalVisible(false)}/>
-                <Image
-                  style={styles.wave}
-                  source={require('../assets/wave.png')} 
-                />
-            </View>
-        </Modal>
-        <FlatList
-            data={cities}
-            renderItem={(itemData) => { return <CityTile text={itemData.item.name} temps={itemData.item.temps.summary} onClick={clickHandler} id={itemData.item.id} effect={'temps'}/>}}
-        />
-    </View>
-   
+      <View style={styles.container, {backgroundColor: getBackgroundColorTheme(colorScheme === 'light')}}>
+          <Modal visible={modalVisible} transparent={true}>
+              <View style={styles.modalView}>
+                  <Image
+                    style={styles.logo}
+                    source={require('../assets/Logo.png')} 
+                  />
+                  <Button style={styles.button} type='clear' icon={<Ionicons name='arrow-forward' size={DefaultStyle.size} color={DefaultStyle.primary}/>}
+                  onPress={() => setModalVisible(false)}/>
+                  <Image
+                    style={styles.wave}
+                    source={require('../assets/wave.png')} 
+                  />
+              </View>
+          </Modal>
+          <FlatList
+              data={cities}
+              renderItem={(itemData) => { return <CityTile text={itemData.item.name} temps={itemData.item.temps.summary} onClick={clickHandler} id={itemData.item.id} effect={'temps'}/>}}
+          />
+      </View>
   );
 }
 

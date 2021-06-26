@@ -50,7 +50,8 @@ const styles = StyleSheet.create({
     shadowColor: "black",
     shadowOpacity: 0.25,
     shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 10
+    shadowRadius: 10,
+    color: 'black'
   },
   item: {
       flex: 1

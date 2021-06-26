@@ -2,6 +2,8 @@ import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { Chart, VerticalAxis, HorizontalAxis, Line } from 'react-native-responsive-linechart';
 import DefaultStyle from '../constants/Color';
+import {getColorTheme} from '../constants/Theme';
+import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 
 export default GridTile = props => {
 
@@ -28,6 +30,9 @@ export default GridTile = props => {
     valuesverticalaxis = [5, 10, 15, 20]
   }
 
+  const colorScheme = useColorScheme();
+
+
   return (
     <TouchableOpacity
       style={styles.itemContainer}
@@ -42,7 +47,7 @@ export default GridTile = props => {
       >
         <VerticalAxis tickValues={valuesverticalaxis} />
         <HorizontalAxis tickCount={7} />
-        <Line data={data1} smoothing="none" theme={{ stroke: { color: DefaultStyle.primary, width: 2 } }} />
+        <Line data={data1} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === "light"), width: 2 } }} />
       </Chart>
     </TouchableOpacity>
   );

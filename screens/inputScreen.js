@@ -4,11 +4,16 @@ import InputTile from '../components/inputTile';
 import { ToDoContext } from '../data/ToDoContext';
 import City from '../model/city';
 import { storeData } from '../data/AppStorage';
+import { useColorScheme } from 'react-native-appearance';
+import { getBackgroundColorTheme, getTextColorTheme, getColorTheme } from '../constants/Theme';
 
 
 export default InputScreen = ({ navigation }) => {
 
   const [toDoData, setToDoData] = useContext(ToDoContext);
+
+  const colorScheme = useColorScheme();
+
 
   const addHandler = name => {
     if (name !== '') {
@@ -66,7 +71,7 @@ export default InputScreen = ({ navigation }) => {
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View style={{ flex: 1, padding: 15, flexDirection: 'row' }}>
+      <View style={{ flex: 1, padding: 15, flexDirection: 'row', backgroundColor: getBackgroundColorTheme(colorScheme === 'light') }}>
         <InputTile placeholderText={"Add new City"} onAdd={addHandler} />
       </View>
     </TouchableWithoutFeedback>
