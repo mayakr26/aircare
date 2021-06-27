@@ -2,7 +2,7 @@ import { AsyncStorage } from 'react-native';
 
 export const storeData = (data) => {
     try {
-        AsyncStorage.setItem('APPDATA2', JSON.stringify(data));
+        AsyncStorage.setItem('APPDATA3', JSON.stringify(data));
     } catch (e) {
         throw e;
     }
@@ -10,7 +10,7 @@ export const storeData = (data) => {
 
 export const getData = () => {
     return new Promise((resolve, reject) => {
-        AsyncStorage.getItem('APPDATA2').then(value => {
+        AsyncStorage.getItem('APPDATA3').then(value => {
             if (value != null) {
                 resolve(value);
             } else {
