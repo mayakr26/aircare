@@ -7,6 +7,7 @@ import { ToDoContext } from '../data/ToDoContext';
 import DefaultStyle from '../constants/Color';
 import { useColorScheme } from 'react-native-appearance';
 import { getBackgroundColorTheme } from '../constants/Theme';
+import { useDimensions } from '@react-native-community/hooks';
 
 
 export default TempGeneral = ({navigation}) => {
@@ -18,6 +19,8 @@ export default TempGeneral = ({navigation}) => {
     const cities = toDoData.citiestemp;
 
     const colorScheme = useColorScheme();
+
+    const { height } = useDimensions().window;
 
     const clickHandler = id => {
         navigation.navigate("TempCity", {itemId: id});
@@ -33,7 +36,7 @@ export default TempGeneral = ({navigation}) => {
     }, [navigation]);
 
     return (
-      <View style={styles.container, {backgroundColor: getBackgroundColorTheme(colorScheme === 'light')}}>
+      <View style={height > 650 ? styles.container : styles.containerHorizontal, {backgroundColor: getBackgroundColorTheme(colorScheme === 'light')}}>
           <Modal visible={modalVisible} transparent={true}>
               <View style={styles.modalView}>
                   <Image
@@ -60,8 +63,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    
-    
+  },
+  containerHorizontal: {
+    marginLeft: 10,
+    flex : 1,
   },
   modalView: {
       flex: 1,
