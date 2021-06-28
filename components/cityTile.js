@@ -4,11 +4,14 @@ import { Chart, VerticalAxis, HorizontalAxis, Line } from 'react-native-responsi
 import DefaultStyle from '../constants/Color';
 import {getColorTheme} from '../constants/Theme';
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
+import { useDimensions } from '@react-native-community/hooks';
 
 export default GridTile = props => {
 
   let data1 = []
   let times = [1961, 1971, 1981, 1991, 2001, 2011, 2021]
+
+  const { height } = useDimensions().window;
 
   for(let i in props.temps) {
     data1.push({
@@ -35,7 +38,7 @@ export default GridTile = props => {
 
   return (
     <TouchableOpacity
-      style={styles.itemContainer}
+      style={height > 650 ? styles.itemContainer : styles.itemContainerHorizontal}
       onPress={() => props.onClick(props.id)}
     >
       <Text style={styles.gridText}>{props.text}</Text>
@@ -59,6 +62,21 @@ const styles = StyleSheet.create({
     margin: 15,
     padding: 20,
     height: 220,
+    width: 340,
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
+    backgroundColor: "white",
+    borderRadius: 20,
+    shadowColor: DefaultStyle.primary,
+    shadowOpacity: 0.25,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 10
+  },
+  itemContainerHorizontal: {
+    flex: 1,
+    margin: 15,
+    padding: 20,
+    height: 200,
     width: 340,
     alignItems: "flex-start",
     justifyContent: "flex-start",
