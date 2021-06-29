@@ -1,11 +1,12 @@
-import React, { useContext } from 'react';
-import { View, TouchableWithoutFeedback, Keyboard } from 'react-native';
+import React, { useLayoutEffect, useContext } from 'react';
+import { View, TouchableWithoutFeedback, Keyboard, BackIcon } from 'react-native';
 import InputTile from '../components/inputTile';
 import { ToDoContext } from '../data/ToDoContext';
 import City from '../model/city';
 import { storeData } from '../data/AppStorage';
 import { useColorScheme } from 'react-native-appearance';
-import { getBackgroundColorTheme, getTextColorTheme, getColorTheme } from '../constants/Theme';
+import { getBackgroundColorTheme, getHeaderBackgroundColorTheme, getColorTheme } from '../constants/Theme';
+import { Ionicons } from '@expo/vector-icons';
 
 
 export default InputScreen = ({ navigation }) => {
@@ -14,6 +15,14 @@ export default InputScreen = ({ navigation }) => {
 
   const colorScheme = useColorScheme();
 
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerStyle: { height: 100, backgroundColor: getHeaderBackgroundColorTheme(colorScheme === 'light') },
+      headerBackImage: () => <Ionicons name={'chevron-back'} size={32} color={getColorTheme(colorScheme === 'light')} />,
+      headerBackTitle: 'Back',
+      headerTintColor: getColorTheme(colorScheme === 'light'),
+    });
+  }, [navigation]);
 
   const addHandler = name => {
     if (name !== '') {
@@ -71,7 +80,7 @@ export default InputScreen = ({ navigation }) => {
 
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View style={{ flex: 1, padding: 15, flexDirection: 'row', backgroundColor: getBackgroundColorTheme(colorScheme === 'light') }}>
+      <View style={{ flex: 1, padding: 15, flexDirection: 'row', backgroundColor: getBackgroundColorTheme(colorScheme === 'light')}}>
         <InputTile placeholderText={"Add new City"} onAdd={addHandler} />
       </View>
     </TouchableWithoutFeedback>

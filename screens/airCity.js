@@ -6,7 +6,7 @@ import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import { Chart, VerticalAxis, HorizontalAxis, Line } from 'react-native-responsive-linechart';
 import DefaultStyle from '../constants/Color';
 import { useColorScheme } from 'react-native-appearance';
-import { getBackgroundColorTheme, getTextColorTheme, getColorTheme } from '../constants/Theme';
+import { getBackgroundColorTheme, getTextColorTheme, getColorTheme, getHeaderBackgroundColorTheme } from '../constants/Theme';
 
 export default AirCity = ({ route, navigation }) => {
 
@@ -23,6 +23,8 @@ export default AirCity = ({ route, navigation }) => {
 
   let data1 = [[], [], [], [], [], [], [], [], [], [], [], []];
 
+  let routeViews = [];
+
   for (let a = 0; a < 12; a += 1) {
     for (let i = 0; i < times.length; i += 1) {
       data1[a].push({
@@ -35,248 +37,49 @@ export default AirCity = ({ route, navigation }) => {
   const rowData = [[], [], [], [], [], [], [], [], [], [], [], []];
   for (let a = 0; a < 12; a += 1) {
     for (let i = 0; i < times.length; i += 1) {
-      rowData[a].push([times[i], selectedCity.temps.month[a][i]+' µg/m^3']);
+      rowData[a].push([times[i], selectedCity.temps.month[a][i] + ' µg/m^3']);
     }
   }
 
- 
   const [getData, setData] = useState({
-    tableTop: ['J', 'F', 'M','A','M','J','J','A','S','O','N','D'],
-    tableHead: [['Januar'],['Februar'],['März'],['April'], ['Mai'],['Juni'],['Juli'],['August'],['September'],['Oktober'],['November'],['Dezember']],
+    tableTop: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
+    tableHead: [['Januar'], ['Februar'], ['März'], ['April'], ['Mai'], ['Juni'], ['Juli'], ['August'], ['September'], ['Oktober'], ['November'], ['Dezember']],
     tableData: rowData
   })
+
   useLayoutEffect(() => {
-    navigation.setOptions({    
-        headerStyle: {height: 100},    
-        headerTitle: cityName
-      });
-  }, [navigation]);  
+    navigation.setOptions({
+      headerStyle: { height: 100, backgroundColor: getHeaderBackgroundColorTheme(colorScheme === 'light') },
+      headerTitle: cityName
+    });
+  }, [navigation]);
 
-  const FirstRoute = () => (
+  for (let index = 0; index < 12; index++) {
+
+  let route = () => (
     <View style={styles.view}>
       <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
-        <Row data={getData.tableHead[0]} style={styles.head} textStyle={styles.text} />
-        <Rows data={getData.tableData[0]} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}} />
+        <Row data={getData.tableHead[index]} style={{backgroundColor: getColorTheme(colorScheme === 'light'), height: 40}} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}}/>
+        <Rows data={getData.tableData[index]} textStyle={{ color: getTextColorTheme(colorScheme === 'light'), margin: 6 }} />
       </Table>
       <Chart
-      style={{ height: 120, width: '100%', marginTop: 20 }}
-      xDomain={{ min: 1961, max: 2021 }}
-      yDomain={{ min: 5, max: 230 }}
-      padding={{ left: 20, top: 10, bottom: 20, right: 10 }}
-     >
-      <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} />
-      <HorizontalAxis tickCount={7} />
-      <Line data={data1[0]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
-      </Chart>
-    </View>
-  );
-
-  const SecondRoute = () => (
-    <View style={styles.view}>
-      <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
-        <Row data={getData.tableHead[1]} style={styles.head} textStyle={styles.text} />
-        <Rows data={getData.tableData[1]} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}} />
-      </Table>
-      <Chart
-      style={{ height: 120, width: '100%', marginTop: 20 }}
-      xDomain={{ min: 1961, max: 2021 }}
-      yDomain={{ min: 5, max: 230 }}
-      padding={{ left: 20, top: 10, bottom: 20, right: 10 }}
-     >
-      <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} />
-      <HorizontalAxis tickCount={7} />
-      <Line data={data1[1]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
+        style={{ height: 120, width: '100%', marginTop: 20 }}
+        xDomain={{ min: 1961, max: 2021 }}
+        yDomain={{ min: 5, max: 230 }}
+        padding={{ left: 20, top: 10, bottom: 20, right: 10 }}
+      >
+        <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} theme={{ labels: { label: { color: getTextColorTheme(colorScheme === 'light')}}}} />
+        <HorizontalAxis tickCount={7} color={'#fff'} theme={{ labels: { label: { color: getTextColorTheme(colorScheme === 'light')}}}} />
+        <Line data={data1[index]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
       </Chart>
     </View>
   );
 
-  const ThirdRoute = () => (
-    <View style={styles.view}>
-      <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
-        <Row data={getData.tableHead[2]} style={styles.head} textStyle={styles.text} />
-        <Rows data={getData.tableData[2]} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}} />
-      </Table>
-      <Chart
-      style={{ height: 120, width: '100%', marginTop: 20 }}
-      xDomain={{ min: 1961, max: 2021 }}
-      yDomain={{ min: 5, max: 230 }}
-      padding={{ left: 20, top: 10, bottom: 20, right: 10 }}
-     >
-      <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} />
-      <HorizontalAxis tickCount={7} />
-      <Line data={data1[2]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
-      </Chart>
-    </View>
-  );
-  const FourthRoute = () => (
-    <View style={styles.view}>
-      <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
-        <Row data={getData.tableHead[3]} style={styles.head} textStyle={styles.text} />
-        <Rows data={getData.tableData[3]} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}} />
-      </Table>
-      <Chart
-      style={{ height: 120, width: '100%', marginTop: 20 }}
-      xDomain={{ min: 1961, max: 2021 }}
-      yDomain={{ min: 5, max: 230 }}
-      padding={{ left: 20, top: 10, bottom: 20, right: 10 }}
-     >
-      <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} />
-      <HorizontalAxis tickCount={7} />
-      <Line data={data1[3]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
-      </Chart>
-    </View>
-  );
-
-  const FifthRoute = () => (
-    <View style={styles.view}>
-      <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
-        <Row data={getData.tableHead[4]} style={styles.head} textStyle={styles.text} />
-        <Rows data={getData.tableData[4]} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}} />
-      </Table>
-      <Chart
-      style={{ height: 120, width: '100%', marginTop: 20 }}
-      xDomain={{ min: 1961, max: 2021 }}
-      yDomain={{ min: 5, max: 230 }}
-      padding={{ left: 20, top: 10, bottom: 20, right: 10 }}
-     >
-      <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} />
-      <HorizontalAxis tickCount={7} />
-      <Line data={data1[4]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
-      </Chart>
-    </View>
-  );
-  const SixthRoute = () => (
-    <View style={styles.view}>
-      <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
-        <Row data={getData.tableHead[5]} style={styles.head} textStyle={styles.text} />
-        <Rows data={getData.tableData[5]} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}} />
-      </Table>
-      <Chart
-      style={{ height: 120, width: '100%', marginTop: 20 }}
-      xDomain={{ min: 1961, max: 2021 }}
-      yDomain={{ min: 5, max: 230 }}
-      padding={{ left: 20, top: 10, bottom: 20, right: 10 }}
-     >
-      <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} />
-      <HorizontalAxis tickCount={7} />
-      <Line data={data1[5]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
-      </Chart>
-    </View>
-  );
-
-  const SeventhRoute = () => (
-    <View style={styles.view}>
-      <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
-        <Row data={getData.tableHead[6]} style={styles.head} textStyle={styles.text} />
-        <Rows data={getData.tableData[6]} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}} />
-      </Table>
-      <Chart
-      style={{ height: 120, width: '100%', marginTop: 20 }}
-      xDomain={{ min: 1961, max: 2021 }}
-      yDomain={{ min: 5, max: 230 }}
-      padding={{ left: 20, top: 10, bottom: 20, right: 10 }}
-     >
-      <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} />
-      <HorizontalAxis tickCount={7} />
-      <Line data={data1[6]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
-      </Chart>
-    </View>
-  );
-
-  const EighthRoute = () => (
-    <View style={styles.view}>
-      <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
-        <Row data={getData.tableHead[7]} style={styles.head} textStyle={styles.text} />
-        <Rows data={getData.tableData[7]} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}} />
-      </Table>
-      <Chart
-      style={{ height: 120, width: '100%', marginTop: 20 }}
-      xDomain={{ min: 1961, max: 2021 }}
-      yDomain={{ min: 5, max: 230 }}
-      padding={{ left: 20, top: 10, bottom: 20, right: 10 }}
-     >
-      <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} />
-      <HorizontalAxis tickCount={7} />
-      <Line data={data1[7]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
-      </Chart>
-    </View>
-  );
-  const NinthRoute = () => (
-    <View style={styles.view}>
-      <Table  borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
-        <Row data={getData.tableHead[8]} style={styles.head} textStyle={styles.text} />
-        <Rows data={getData.tableData[8]} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}} />
-      </Table>
-      <Chart
-      style={{ height: 120, width: '100%', marginTop: 20 }}
-      xDomain={{ min: 1961, max: 2021 }}
-      yDomain={{ min: 5, max: 230 }}
-      padding={{ left: 20, top: 10, bottom: 20, right: 10 }}
-     >
-      <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} />
-      <HorizontalAxis tickCount={7} />
-      <Line data={data1[8]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
-      </Chart>
-    </View>
-  );
-  const TenthRoute = () => (
-    <View style={styles.view}>
-      <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
-        <Row data={getData.tableHead[9]} style={styles.head} textStyle={styles.text} />
-        <Rows data={getData.tableData[9]} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}} />
-      </Table>
-      <Chart
-      style={{ height: 120, width: '100%', marginTop: 20 }}
-      xDomain={{ min: 1961, max: 2021 }}
-      yDomain={{ min: 5, max: 230 }}
-      padding={{ left: 20, top: 10, bottom: 20, right: 10 }}
-     >
-      <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} />
-      <HorizontalAxis tickCount={7} />
-      <Line data={data1[9]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
-      </Chart>
-    </View>
-  );
-
-  const EleventhRoute = () => (
-    <View style={styles.view}>
-      <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
-        <Row data={getData.tableHead[10]} style={styles.head} textStyle={styles.text} />
-        <Rows data={getData.tableData[10]} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}} />
-      </Table>
-      <Chart
-      style={{ height: 120, width: '100%', marginTop: 20 }}
-      xDomain={{ min: 1961, max: 2021 }}
-      yDomain={{ min: 5, max: 230 }}
-      padding={{ left: 20, top: 10, bottom: 20, right: 10 }}
-     >
-      <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} />
-      <HorizontalAxis tickCount={7} />
-      <Line data={data1[10]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
-      </Chart>
-    </View>
-  );
-
-  const TwelfthRoute = () => (
-    <View style={styles.view}>
-      <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
-        <Row data={getData.tableHead[11]} style={styles.head} textStyle={styles.text} />
-        <Rows data={getData.tableData[11]} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}} />
-      </Table>
-      <Chart
-      style={{ height: 120, width: '100%', marginTop: 20 }}
-      xDomain={{ min: 1961, max: 2021 }}
-      yDomain={{ min: 5, max: 230 }}
-      padding={{ left: 20, top: 10, bottom: 20, right: 10 }}
-     >
-      <VerticalAxis tickValues={[5, 30, 55, 80, 105, 130, 155, 180, 205, 230]} />
-      <HorizontalAxis tickCount={7}/>
-      <Line data={data1[11]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
-      </Chart>
-    </View>
-  );
-
-  
+  routeViews.push(
+     route
+   )
+    
+  }
 
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
@@ -293,49 +96,49 @@ export default AirCity = ({ route, navigation }) => {
     { key: 'november', title: 'N' },
     { key: 'december', title: 'D' },
 
- 
+
   ]);
 
   const renderScene = SceneMap({
-    january: FirstRoute,
-    february: SecondRoute,
-    march: ThirdRoute,
-    april: FourthRoute,
-    may: FifthRoute,
-    june: SixthRoute,
-    july: SeventhRoute,
-    august: EighthRoute,
-    september: NinthRoute,
-    october: TenthRoute,
-    november: EleventhRoute,
-    december: TwelfthRoute,
+    january: routeViews[0],
+    february: routeViews[1],
+    march: routeViews[2],
+    april: routeViews[3],
+    may: routeViews[4],
+    june: routeViews[5],
+    july: routeViews[6],
+    august: routeViews[7],
+    september: routeViews[8],
+    october: routeViews[9],
+    november: routeViews[10],
+    december: routeViews[11],
 
 
   });
-  
+
 
 
   return (
-    
+
     <View style={styles.container}>
       <TabView
         navigationState={{ index, routes }}
         renderScene={renderScene}
         onIndexChange={setIndex}
-        style = {{backgroundColor: getBackgroundColorTheme(colorScheme === 'light')}}
+        style={{ backgroundColor: getBackgroundColorTheme(colorScheme === 'light') }}
         initialLayout={{ width: layout.width }}
         renderTabBar={props =>
-          	  <TabBar
-          	    {...props}
-          	    indicatorStyle={{ backgroundColor: 'white' }}
-                tabStyle={{ backgroundColor: getColorTheme(colorScheme === 'light'), minHeight: 50, padding: -10 }}
-          	  />
-          	}
+          <TabBar
+            {...props}
+            indicatorStyle={{ backgroundColor: 'white' }}
+            tabStyle={{ backgroundColor: getColorTheme(colorScheme === 'light'), minHeight: 50, padding: -10 }}
+          />
+        }
       />
     </View>
-    
+
   );
-  
+
 };
 
 
@@ -353,7 +156,5 @@ const styles = StyleSheet.create({
     marginLeft: 30,
     marginTop: 30,
   },
-
-  head: { height: 40, backgroundColor: DefaultStyle.tableHeadBackgroundColor }
 
 });

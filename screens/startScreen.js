@@ -1,19 +1,28 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import {Ionicons} from '@expo/vector-icons';
+import { StyleSheet, Image, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
+import DefaultStyle from '../constants/Color';
 
-export default StartScreen = ({navigation}) => {
+export default StartScreen = ({ navigation }) => {
 
   const pressHandler = props => {
-    navigation.navigate("tempGeneral");
+    navigation.replace("generalScreen");
   };
-  
+
   return (
+
     <View style={styles.container}>
-      <Text>Start Screen here!</Text>
-      <Button style={styles.button} type='clear' icon={<Ionicons name='ios-arrow-forward-sharp' size={32} color="rgb(0,122,255)"/>}
-      onPress={pressHandler}/>
+      <Image
+        style={styles.logo}
+        source={require('../assets/Logo.png')}
+      />
+      <Button style={styles.button} type='clear' icon={<Ionicons name='arrow-forward' size={DefaultStyle.size} color={DefaultStyle.primary} />}
+        onPress={pressHandler} />
+      <Image
+        style={styles.wave}
+        source={require('../assets/wave.png')}
+      />
     </View>
   );
 }
@@ -21,11 +30,19 @@ export default StartScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: 'white',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
   },
-  button: {
-    
+
+  logo: {
+    marginTop: 70,
+    resizeMode: 'contain',
+  },
+  wave: {
+
+    resizeMode: 'contain',
+
+
   }
 });

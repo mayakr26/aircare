@@ -6,7 +6,7 @@ import CityTile from '../components/cityTile';
 import { ToDoContext } from "../data/ToDoContext";
 import DefaultStyle from "../constants/Color";
 import { useColorScheme } from 'react-native-appearance';
-import { getBackgroundColorTheme } from '../constants/Theme';
+import { getBackgroundColorTheme, getHeaderBackgroundColorTheme, getColorTheme } from '../constants/Theme';
 
 export default AirGeneral = ({navigation}) => {
 
@@ -22,9 +22,9 @@ export default AirGeneral = ({navigation}) => {
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            headerStyle: {height: 100},  
+            headerStyle: {height: 100, backgroundColor: getHeaderBackgroundColorTheme(colorScheme === 'light') },  
             title: "Air Condition",
-            headerRight: () => (<Button type='clear' icon={<Ionicons name='ios-add' size={DefaultStyle.size} color={DefaultStyle.primary}/>}
+            headerRight: () => (<Button type='clear' icon={<Ionicons name='ios-add' size={DefaultStyle.size} color={getColorTheme(colorScheme === 'light')}/>}
             onPress={() => navigation.navigate("AddCity")}/>)
         });
     }, [navigation]);

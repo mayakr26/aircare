@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import GeneralNavigator from "./navigation/GeneralNavigator";
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
 import { CITIESAIR, CITIESTEMP } from './data/dummyData';
 import { ToDoContext } from "./data/ToDoContext";
 import { getData } from './data/AppStorage';
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
-
+import MainNavigator from "./navigation/MainNavigator";
 
 export default App => {
 
@@ -33,10 +32,9 @@ export default App => {
     return (
       <AppearanceProvider>
         <ToDoContext.Provider value={[toDoData, setToDoData]}>
-          <GeneralNavigator />
+          <MainNavigator />
         </ToDoContext.Provider>
       </AppearanceProvider>
-
     );
   }
 };

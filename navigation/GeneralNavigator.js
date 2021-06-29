@@ -6,7 +6,7 @@ import AirNavigator from './AirNavigator';
 import { NavigationContainer } from "@react-navigation/native";
 import DefaultStyle from '../constants/Color';
 import { useColorScheme } from 'react-native-appearance';
-import { getBackgroundColorTheme, getColorTheme } from '../constants/Theme';
+import { getColorTheme, getHeaderBackgroundColorTheme } from '../constants/Theme';
 
 const GeneralTab = createBottomTabNavigator();
 
@@ -14,7 +14,7 @@ export default GeneralNavigator = (navigation) => {
     const colorScheme = useColorScheme();
 
     return (
-        <NavigationContainer>
+        <NavigationContainer independent={true}>
             <GeneralTab.Navigator                
                 initialRouteName="Temperature"      
                 screenOptions={({ route }) => ({
@@ -31,14 +31,14 @@ export default GeneralNavigator = (navigation) => {
                 })}
                 tabBarOptions={{
                     activeTintColor: getColorTheme(colorScheme === 'light'),
-                    style:{backgroundColor: getBackgroundColorTheme(colorScheme === 'light')},
+                    style:{backgroundColor: getHeaderBackgroundColorTheme(colorScheme === 'light')},
                     inactiveTintColor: 'gray',
                     labelStyle: {
                         fontFamily: DefaultStyle.font
                     }
                 }}
             >
-                <GeneralTab.Screen name="Temperature" component={TemperatureNavigator} title="Temperatures" />
+                <GeneralTab.Screen name="Temperature" component={TemperatureNavigator} title="Temperatures"/>
                 <GeneralTab.Screen name="Air Condition" component={AirNavigator} />
             </GeneralTab.Navigator>
         </NavigationContainer>
