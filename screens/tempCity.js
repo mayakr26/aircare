@@ -47,7 +47,8 @@ export default TempCity = ({ route, navigation }) => {
     tableData: rowData
   })
   useLayoutEffect(() => {
-    navigation.setOptions({      
+    navigation.setOptions({  
+        headerStyle: {height: 100},      
         headerTitle: cityName
       });
   }, [navigation]);  

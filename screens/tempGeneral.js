@@ -26,14 +26,15 @@ export default TempGeneral = ({navigation}) => {
         navigation.navigate("TempCity", {itemId: id});
       };
 
-  
     useLayoutEffect(() => {
-        navigation.setOptions({      
-            headerTitle: "Temperature",
-            headerRight: () => (<Button type='clear' icon={<Ionicons name='ios-add' size={DefaultStyle.size} color={DefaultStyle.primary}/>}
-          onPress={() => navigation.navigate("AddCity")}/>)
-          });
+      navigation.setOptions({   
+          headerStyle: {height: 100},   
+          headerTitle: "Temperature",
+          headerRight: () => (<Button type='clear' icon={<Ionicons name='ios-add' size={DefaultStyle.size} color={DefaultStyle.primary}/>}
+        onPress={() => navigation.navigate("AddCity")}/>)
+        });
     }, [navigation]);
+    
 
     return (
       <View style={height > 650 ? styles.container : styles.containerHorizontal, {backgroundColor: getBackgroundColorTheme(colorScheme === 'light')}}>

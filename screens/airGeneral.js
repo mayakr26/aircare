@@ -22,6 +22,7 @@ export default AirGeneral = ({navigation}) => {
 
     useLayoutEffect(() => {
         navigation.setOptions({
+            headerStyle: {height: 100},  
             title: "Air Condition",
             headerRight: () => (<Button type='clear' icon={<Ionicons name='ios-add' size={DefaultStyle.size} color={DefaultStyle.primary}/>}
             onPress={() => navigation.navigate("AddCity")}/>)
