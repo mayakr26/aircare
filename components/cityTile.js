@@ -66,8 +66,8 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     justifyContent: "flex-start",
     borderRadius: 20,
-    shadowColor: DefaultStyle.primary,
-    shadowOpacity: 0.25,
+    shadowColor: DefaultStyle.black,
+    shadowOpacity: 0.20,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 10
   },
@@ -80,8 +80,8 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     justifyContent: "flex-start",
     borderRadius: 20,
-    shadowColor: DefaultStyle.primary,
-    shadowOpacity: 0.25,
+    shadowColor: DefaultStyle.black,
+    shadowOpacity: 0.20,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 10
   },

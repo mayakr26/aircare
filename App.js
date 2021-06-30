@@ -17,7 +17,7 @@ export default App => {
   useEffect(() => {
     getData().then((returnedValue) => {
       setToDoData(JSON.parse(returnedValue))}).catch((e) => {
-        console.error(e)
+        console.log('Storage not set yet')
       });
   }, []);
 
