@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useContext, useState } from 'react';
-import { StyleSheet, View, Text, useWindowDimensions } from 'react-native';
+import { StyleSheet, View, ScrollView, useWindowDimensions } from 'react-native';
 import { ToDoContext } from '../data/ToDoContext';
 import { Table, Row, Rows } from 'react-native-table-component';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
@@ -7,6 +7,7 @@ import { Chart, VerticalAxis, HorizontalAxis, Line } from 'react-native-responsi
 import DefaultStyle from '../constants/Color';
 import { useColorScheme } from 'react-native-appearance';
 import { getBackgroundColorTheme, getTextColorTheme, getColorTheme, getHeaderBackgroundColorTheme } from '../constants/Theme';
+import { useDimensions } from '@react-native-community/hooks';
 
 export default AirCity = ({ route, navigation }) => {
 
@@ -24,6 +25,8 @@ export default AirCity = ({ route, navigation }) => {
   let data1 = [[], [], [], [], [], [], [], [], [], [], [], []];
 
   let routeViews = [];
+
+  const { height } = useDimensions().window;
 
   for (let a = 0; a < 12; a += 1) {
     for (let i = 0; i < times.length; i += 1) {
@@ -57,7 +60,8 @@ export default AirCity = ({ route, navigation }) => {
   for (let index = 0; index < 12; index++) {
 
   let route = () => (
-    <View style={styles.view}>
+    <ScrollView>
+    <View style={ height > 650 ? styles.view : styles.viewHorizontal}>
       <Table borderStyle={{ borderWidth: 1, borderColor: DefaultStyle.tableBorderColor }}>
         <Row data={getData.tableHead[index]} style={{backgroundColor: getColorTheme(colorScheme === 'light'), height: 40}} textStyle={{color: getTextColorTheme(colorScheme === 'light'), margin: 6}}/>
         <Rows data={getData.tableData[index]} textStyle={{ color: getTextColorTheme(colorScheme === 'light'), margin: 6 }} />
@@ -73,6 +77,7 @@ export default AirCity = ({ route, navigation }) => {
         <Line data={data1[index]} smoothing="none" theme={{ stroke: { color: getColorTheme(colorScheme === 'light'), width: 2 } }} />
       </Chart>
     </View>
+    </ScrollView>
   );
 
   routeViews.push(
@@ -150,6 +155,12 @@ const styles = StyleSheet.create({
   },
   view: {
     margin: 30,
+  },
+  viewHorizontal: {
+    marginLeft: 100,
+    marginRight: 100,
+    marginTop: 30,
+    marginBottom: 30
   },
   tableTop: {
     marginRight: 30,

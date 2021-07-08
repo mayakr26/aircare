@@ -74,9 +74,10 @@ const styles = StyleSheet.create({
   itemContainerHorizontal: {
     flex: 1,
     margin: 15,
+    marginLeft: 100,
+    marginRight: 100,
     padding: 20,
     height: 200,
-    width: 340,
     alignItems: "flex-start",
     justifyContent: "flex-start",
     borderRadius: 20,
