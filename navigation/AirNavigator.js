@@ -15,11 +15,11 @@ export default TemperatureNavigator = () => {
 
     return (
         <AirStack.Navigator initialRouteName="airGeneral" screenOptions={{
-            headerStyle: {height: 120},
+            headerStyle: {height: 80},
             headerTitleStyle: {fontFamily: DefaultStyle.fontBold, fontSize: DefaultStyle.size, color: getColorTheme(colorScheme === 'light')},      
         }}>
-            <AirStack.Screen name="airGeneral" component={airGeneral} options={{headerStyle: {backgroundColor: getBackgroundColorTheme(colorScheme === 'light'), height: 120}}}/>
-            <AirStack.Screen name="AddCity" component={InputScreen} options={{headerTitle: 'Add City'}, {headerStyle: {backgroundColor: getBackgroundColorTheme(colorScheme === 'light'), height: 120}}}/>
+            <AirStack.Screen name="airGeneral" component={airGeneral} options={{headerStyle: {backgroundColor: getBackgroundColorTheme(colorScheme === 'light'), height: 80}}}/>
+            <AirStack.Screen name="AddCity" component={InputScreen} options={{headerTitle: 'Add City'}, {headerStyle: {backgroundColor: getBackgroundColorTheme(colorScheme === 'light'), height: 80}}}/>
             <AirStack.Screen name="AirCity" component={AirCity}/>
         </AirStack.Navigator>
     );

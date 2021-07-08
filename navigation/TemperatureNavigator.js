@@ -15,11 +15,12 @@ export default TemperatureNavigator = () => {
 
     return (
         <TempStack.Navigator initialRouteName="Temperature" screenOptions={{
+            headerStyle: { height: 80 },
             headerTitleStyle: {fontFamily: DefaultStyle.fontBold, fontSize: DefaultStyle.size, color: getColorTheme(colorScheme === 'light')},      
         }}>
-            <TempStack.Screen name="Temperature" component={TempGeneral} options={{headerStyle: {backgroundColor: getBackgroundColorTheme(colorScheme === 'light'), height: 120}}}/>
-            <TempStack.Screen name="AddCity" component={InputScreen} options={{headerTitle: 'Add City'}, {headerStyle: {backgroundColor: getBackgroundColorTheme(colorScheme === 'light'), height: 120}}}/>
-            <TempStack.Screen name="TempCity" component={TempCity} options={{headerStyle: {backgroundColor: getBackgroundColorTheme(colorScheme === 'light'), height: 120}}}/>
+            <TempStack.Screen name="Temperature" component={TempGeneral} options={{headerStyle: {backgroundColor: getBackgroundColorTheme(colorScheme === 'light'), height: 80}}}/>
+            <TempStack.Screen name="AddCity" component={InputScreen} options={{headerTitle: 'Add City'}, {headerStyle: {backgroundColor: getBackgroundColorTheme(colorScheme === 'light'), height: 80}}}/>
+            <TempStack.Screen name="TempCity" component={TempCity} options={{headerStyle: {backgroundColor: getBackgroundColorTheme(colorScheme === 'light'), height: 80}}}/>
         </TempStack.Navigator>
     );
 }

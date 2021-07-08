@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useContext } from 'react';
-import { View, TouchableWithoutFeedback, Keyboard, BackIcon } from 'react-native';
+import { View, TouchableWithoutFeedback, Keyboard, Dimensions } from 'react-native';
 import InputTile from '../components/inputTile';
 import { ToDoContext } from '../data/ToDoContext';
 import City from '../model/city';
@@ -15,12 +15,22 @@ export default InputScreen = ({ navigation }) => {
 
   const colorScheme = useColorScheme();
 
+  const isPortrait = () => {
+    const dim = Dimensions.get('screen');
+    return dim.height >= dim.width;
+  };
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerStyle: { height: 100, backgroundColor: getHeaderBackgroundColorTheme(colorScheme === 'light') },
       headerBackImage: () => <Ionicons name={'chevron-back'} size={32} color={getColorTheme(colorScheme === 'light')} />,
       headerBackTitle: 'Back',
       headerTintColor: getColorTheme(colorScheme === 'light'),
+    });
+    Dimensions.addEventListener('change', () => {
+      navigation.setOptions({
+        headerStyle: { height: isPortrait() ? 100 : 60, backgroundColor: getHeaderBackgroundColorTheme(colorScheme === 'light') }
+      });
     });
   }, [navigation]);
 

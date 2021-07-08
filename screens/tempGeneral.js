@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState, useContext } from 'react';
-import { StyleSheet, Modal, View, FlatList } from 'react-native';
+import { StyleSheet, Modal, View, FlatList, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 import CityTile from "../components/cityTile";
@@ -26,6 +26,11 @@ export default TempGeneral = ({ navigation }) => {
     navigation.navigate("TempCity", { itemId: id });
   };
 
+  const isPortrait = () => {
+    const dim = Dimensions.get('screen');
+    return dim.height >= dim.width;
+  };
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerStyle: { height: 100, backgroundColor: getHeaderBackgroundColorTheme(colorScheme === 'light') },
@@ -33,15 +38,21 @@ export default TempGeneral = ({ navigation }) => {
       headerRight: () => (<Button type='clear' icon={<Ionicons name='ios-add' size={DefaultStyle.size} color={getColorTheme(colorScheme === 'light')} />}
         onPress={() => navigation.navigate("AddCity")} />)
     });
+
+    Dimensions.addEventListener('change', () => {
+      navigation.setOptions({
+        headerStyle: { height: isPortrait() ? 100 : 60, backgroundColor: getHeaderBackgroundColorTheme(colorScheme === 'light') }
+      });
+    });
   }, [navigation]);
 
 
   return (
-    <View style={{backgroundColor: getBackgroundColorTheme(colorScheme === 'light')}}
+    <View style={{ backgroundColor: getBackgroundColorTheme(colorScheme === 'light') }}
     >
       <FlatList
         data={cities}
-        contentContainerStyle={ height > 650 ? {...styles.container, backgroundColor: getBackgroundColorTheme(colorScheme === 'light'), justifyContent: 'center'} : {...styles.containerHorizontal, backgroundColor: getBackgroundColorTheme(colorScheme === 'light'), justifyContent: 'center'}}
+        contentContainerStyle={height > 650 ? { ...styles.container, backgroundColor: getBackgroundColorTheme(colorScheme === 'light'), justifyContent: 'center' } : { ...styles.containerHorizontal, backgroundColor: getBackgroundColorTheme(colorScheme === 'light'), justifyContent: 'center' }}
         renderItem={(itemData) => { return <CityTile text={itemData.item.name} temps={itemData.item.temps.summary} onClick={clickHandler} id={itemData.item.id} effect={'temps'} /> }}
       />
     </View>
@@ -50,7 +61,7 @@ export default TempGeneral = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    
+
   },
   containerHorizontal: {
     flexDirection: "column",

@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useContext, useState } from 'react';
-import { StyleSheet, View, ScrollView, useWindowDimensions } from 'react-native';
+import { StyleSheet, View, ScrollView, useWindowDimensions, Dimensions } from 'react-native';
 import { ToDoContext } from '../data/ToDoContext';
 import { Table, Row, Rows } from 'react-native-table-component';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
@@ -51,10 +51,21 @@ export default TempCity = ({ route, navigation }) => {
     tableHead: [['Januar'],['Februar'],['März'],['April'], ['Mai'],['Juni'],['Juli'],['August'],['September'],['Oktober'],['November'],['Dezember']],
     tableData: rowData
   })
+  
+  const isPortrait = () => {
+    const dim = Dimensions.get('screen');
+    return dim.height >= dim.width;
+  };
+
   useLayoutEffect(() => {
     navigation.setOptions({  
         headerStyle: {height: 100, backgroundColor: getHeaderBackgroundColorTheme(colorScheme === 'light')},      
         headerTitle: cityName
+      });
+      Dimensions.addEventListener('change', () => {
+        navigation.setOptions({
+          headerStyle: { height: isPortrait() ? 100 : 60, backgroundColor: getHeaderBackgroundColorTheme(colorScheme === 'light') }
+        });
       });
   }, [navigation]);  
 

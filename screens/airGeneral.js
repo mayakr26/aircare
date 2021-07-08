@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useContext } from "react";
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Dimensions, View } from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 import CityTile from '../components/cityTile';
@@ -20,12 +20,22 @@ export default AirGeneral = ({navigation}) => {
         navigation.navigate("AirCity", {itemId: id});
       };
 
+      const isPortrait = () => {
+        const dim = Dimensions.get('screen');
+        return dim.height >= dim.width;
+      };
+
     useLayoutEffect(() => {
         navigation.setOptions({
             headerStyle: {height: 100, backgroundColor: getHeaderBackgroundColorTheme(colorScheme === 'light') },  
             title: "Air Condition",
             headerRight: () => (<Button type='clear' icon={<Ionicons name='ios-add' size={DefaultStyle.size} color={getColorTheme(colorScheme === 'light')}/>}
             onPress={() => navigation.navigate("AddCity")}/>)
+        });
+        Dimensions.addEventListener('change', () => {
+          navigation.setOptions({
+            headerStyle: { height: isPortrait() ? 100 : 60, backgroundColor: getHeaderBackgroundColorTheme(colorScheme === 'light') }
+          });
         });
     }, [navigation]);
 

@@ -16,8 +16,9 @@ export default GeneralNavigator = (navigation) => {
     return (
         <NavigationContainer independent={true}>
             <GeneralTab.Navigator                
-                initialRouteName="Temperature"      
+                initialRouteName="Temperature"   
                 screenOptions={({ route }) => ({
+                    headerStatusBarHeight:0,
                     tabBarIcon: ({ focused, color, size }) => {
                         let iconName;
 
