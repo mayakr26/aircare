@@ -37,12 +37,11 @@ const styles = StyleSheet.create({
 
   logo: {
     marginTop: 70,
-    resizeMode: 'contain',
+    width: '100%',
+    resizeMode: 'stretch',
   },
   wave: {
-
-    resizeMode: 'contain',
-
-
+    width: '100%',
+    resizeMode: 'stretch',
   }
 });

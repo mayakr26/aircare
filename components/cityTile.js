@@ -62,7 +62,6 @@ const styles = StyleSheet.create({
     margin: 15,
     padding: 20,
     height: 220,
-    width: 340,
     alignItems: "flex-start",
     justifyContent: "flex-start",
     borderRadius: 20,
