@@ -1,9 +1,9 @@
 import React, { useLayoutEffect, useState, useContext } from 'react';
-import { StyleSheet, Modal, View, FlatList, Dimensions } from 'react-native';
+import { StyleSheet, View, FlatList, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 import CityTile from "../components/cityTile";
-import { ToDoContext } from '../data/ToDoContext';
+import { CityContext } from '../data/CityContext';
 import DefaultStyle from '../constants/Color';
 import { useColorScheme } from 'react-native-appearance';
 import { getColorTheme, getBackgroundColorTheme, getHeaderBackgroundColorTheme } from '../constants/Theme';
@@ -12,11 +12,10 @@ import { useDimensions } from '@react-native-community/hooks';
 
 export default TempGeneral = ({ navigation }) => {
 
-  const [modalVisible, setModalVisible] = useState(true);
 
-  const [toDoData, setToDoData] = useContext(ToDoContext);
+  const [cityData, setCityData] = useContext(CityContext);
 
-  const cities = toDoData.citiestemp;
+  const cities = cityData.citiestemp;
 
   const colorScheme = useColorScheme();
 

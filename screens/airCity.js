@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useContext, useState } from 'react';
 import { StyleSheet, View, ScrollView, useWindowDimensions, Dimensions } from 'react-native';
-import { ToDoContext } from '../data/ToDoContext';
+import { CityContext } from '../data/CityContext';
 import { Table, Row, Rows } from 'react-native-table-component';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import { Chart, VerticalAxis, HorizontalAxis, Line } from 'react-native-responsive-linechart';
@@ -14,8 +14,8 @@ export default AirCity = ({ route, navigation }) => {
   const colorScheme = useColorScheme();
 
   const { itemId } = route.params;
-  const [toDoData, setToDoData] = useContext(ToDoContext);
-  const selectedCity = toDoData.citiesair.find(cit => cit.id === itemId);
+  const [cityData, setCityData] = useContext(CityContext);
+  const selectedCity = cityData.citiesair.find(cit => cit.id === itemId);
   const cityName = selectedCity.name;
 
   const layout = useWindowDimensions();

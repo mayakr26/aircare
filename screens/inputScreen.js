@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useContext } from 'react';
 import { View, TouchableWithoutFeedback, Keyboard, Dimensions } from 'react-native';
 import InputTile from '../components/inputTile';
-import { ToDoContext } from '../data/ToDoContext';
+import { CityContext } from '../data/CityContext';
 import City from '../model/city';
 import { storeData } from '../data/AppStorage';
 import { useColorScheme } from 'react-native-appearance';
@@ -11,7 +11,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 export default InputScreen = ({ navigation }) => {
 
-  const [toDoData, setToDoData] = useContext(ToDoContext);
+  const [cityData, setCityData] = useContext(CityContext);
 
   const colorScheme = useColorScheme();
 
@@ -68,19 +68,19 @@ export default InputScreen = ({ navigation }) => {
         datatempaverage.push(Math.floor(sumtemp / 12));
       }
 
-      let newIdCounterair = toDoData.citiesair.length + 1;
-      let newIdCountertemp = toDoData.citiestemp.length + 1;
+      let newIdCounterair = cityData.citiesair.length + 1;
+      let newIdCountertemp = cityData.citiestemp.length + 1;
       let d = {
-        citiesair: [...toDoData.citiesair, new City(newIdCounterair + '', name, {
+        citiesair: [...cityData.citiesair, new City(newIdCounterair + '', name, {
           summary: dataairaverage,
           month: dataair
         }, "15.06,14.06,13.06,12.06,11.06,10.06,09.06")],
-        citiestemp: [...toDoData.citiestemp, new City(newIdCountertemp + '', name, {
+        citiestemp: [...cityData.citiestemp, new City(newIdCountertemp + '', name, {
           summary: datatempaverage,
           month: datatemp
         }, "15.06,14.06,13.06,12.06,11.06,10.06,09.06")]
       }
-      setToDoData(data => (d))
+      setCityData(data => (d))
 
       storeData(d);
     }

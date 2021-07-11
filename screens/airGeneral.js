@@ -3,16 +3,16 @@ import { FlatList, StyleSheet, Dimensions, View } from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import { Button } from 'react-native-elements';
 import CityTile from '../components/cityTile';
-import { ToDoContext } from "../data/ToDoContext";
+import { CityContext } from "../data/CityContext";
 import DefaultStyle from "../constants/Color";
 import { useColorScheme } from 'react-native-appearance';
 import { getBackgroundColorTheme, getHeaderBackgroundColorTheme, getColorTheme } from '../constants/Theme';
 
 export default AirGeneral = ({navigation}) => {
 
-    const [toDoData, setToDoData] = useContext(ToDoContext);
+    const [cityData, setCityData] = useContext(CityContext);
 
-    const cities = toDoData.citiesair;
+    const cities = cityData.citiesair;
 
     const colorScheme = useColorScheme();
 

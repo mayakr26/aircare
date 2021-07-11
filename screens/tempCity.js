@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useContext, useState } from 'react';
 import { StyleSheet, View, ScrollView, useWindowDimensions, Dimensions } from 'react-native';
-import { ToDoContext } from '../data/ToDoContext';
+import { CityContext } from '../data/CityContext';
 import { Table, Row, Rows } from 'react-native-table-component';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import { Chart, VerticalAxis, HorizontalAxis, Line } from 'react-native-responsive-linechart';
@@ -15,8 +15,8 @@ export default TempCity = ({ route, navigation }) => {
   const colorScheme = useColorScheme();
 
   const { itemId } = route.params;
-  const [toDoData, setToDoData] = useContext(ToDoContext);
-  const selectedCity = toDoData.citiestemp.find(cit => cit.id === itemId);
+  const [cityData, setCutyData] = useContext(CityContext);
+  const selectedCity = cityData.citiestemp.find(cit => cit.id === itemId);
   const cityName = selectedCity.name;
 
   const layout = useWindowDimensions();

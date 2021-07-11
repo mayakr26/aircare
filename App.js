@@ -2,21 +2,21 @@ import React, { useState, useEffect } from "react";
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
 import { CITIESAIR, CITIESTEMP } from './data/dummyData';
-import { ToDoContext } from "./data/ToDoContext";
+import { CityContext } from "./data/CityContext";
 import { getData } from './data/AppStorage';
 import { AppearanceProvider, useColorScheme } from 'react-native-appearance';
 import MainNavigator from "./navigation/MainNavigator";
 
 export default App => {
 
-  const [toDoData, setToDoData] = useState({
+  const [cityData, setCityData] = useState({
     citiesair: CITIESAIR,
     citiestemp: CITIESTEMP
   });
 
   useEffect(() => {
     getData().then((returnedValue) => {
-      setToDoData(JSON.parse(returnedValue))}).catch((e) => {
+      setCityData(JSON.parse(returnedValue))}).catch((e) => {
         console.log('Storage not set yet')
       });
   }, []);
@@ -31,9 +31,9 @@ export default App => {
   } else {
     return (
       <AppearanceProvider>
-        <ToDoContext.Provider value={[toDoData, setToDoData]}>
+        <CityContext.Provider value={[cityData, setCityData]}>
           <MainNavigator />
-        </ToDoContext.Provider>
+        </CityContext.Provider>
       </AppearanceProvider>
     );
   }

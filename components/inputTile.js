@@ -3,7 +3,6 @@ import { Button } from "react-native-elements";
 import { View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { StyleSheet, TextInput } from "react-native";
-import DefaultStyle from '../constants/Color';
 import { getColorTheme, getTileBackgroundColorTheme } from '../constants/Theme';
 import { useColorScheme } from 'react-native-appearance';
 
